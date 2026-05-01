@@ -17,7 +17,7 @@ AKD's approach is a **composable multi-agent framework** where each step of a sc
 ## What exists today
 
 - **Domain agents** for data discovery (CMR, PDS, Astro), code discovery, and research gap analysis — each with a documented reasoning strategy and dedicated tool set.
-- **A five-stage closed-loop pipeline (CM1)** that takes a research question through feasibility mapping, workflow-spec generation, experiment implementation, result reporting, and paper assembly — with human approval gates at every stage.
+- **A five-stage closed-loop pipeline (CM1)** — an end-to-end research workflow that takes a research question through gap analysis, capability/feasibility mapping, workflow-spec building, experiment implementation, and research-report generation, with human approval gates between stages.
 - **A framework-level guardrail system** with Granite Guardian (content moderation) and a Risk Agent (science-risk LLM judge) composable over any agent's input or output.
 - **A web product (Flow)** that exposes the agents through a natural-language planner and a visual workflow canvas. Deployed at [flow.akd.odsi.io](https://flow.akd.odsi.io).
 - **A playground (Labs)** for building and benchmarking experimental agents. Deployed at [labs.akd.odsi.io](https://labs.akd.odsi.io).
