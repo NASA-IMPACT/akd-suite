@@ -1,5 +1,7 @@
 # Guardrails
 
+AKD is a NASA-IMPACT program building AI-augmented tools that help scientists find, evaluate, and reason about scientific knowledge — datasets, code, literature, methods — across NASA's Science Mission Directorate, with humans kept in the loop for approval and interpretation. Guardrails are how that vision survives contact with real LLM behavior: every agent in AKD ships with a safety layer that protects users from harmful content and protects the science from low-quality model outputs, so researchers can trust the agents to assist — never to substitute for — their judgement.
+
 ## What this is
 
 The AKD guardrail layer is a **composable safety filter** that sits between an agent and the world. It does not change how an agent reasons — it inspects what goes in and what comes out, and gives the system a chance to flag, score, or veto content before it reaches a user (or before the agent acts on a malformed prompt).
@@ -29,35 +31,17 @@ That uniform shape is what makes guardrails interchangeable. Three things follow
 
 1. **Input vs. output guarding.** The same provider can be wired to inspect what enters the agent or what leaves it. Input-side guards block harmful prompts before any tokens are generated; output-side guards catch unsafe or low-quality responses before they're shown.
 2. **Composition.** Because every guardrail produces the same verdict shape, multiple guardrails can be combined: run them all and require everyone to pass, run them in parallel and accept if any passes, or run them sequentially and stop at the first failure ("fail-fast"). The third pattern is the workhorse for cost-sensitive deployments — a cheap filter ahead of an expensive judge.
-3. **Result attached to the response.** When the agent answers, the guardrail verdicts are attached to the response object. Callers can read them and decide what to do — surface a warning, block delivery, route to human review, or log for evaluation. The guardrail itself does not silently swallow the response; it reports.
-
-These ideas are implemented as decorators and runtime wrappers in `akd-core`; the API surface is summarized at the bottom of this file.
+3. **Result attached to the response.** When the agent answers, the guardrail verdicts travel with the response. Callers can read them and decide what to do — surface a warning, block delivery, route to human review, or log for evaluation. The guardrail itself does not silently swallow the response; it reports.
 
 ## How it's used
 
 A typical AKD deployment uses guardrails in three ways:
 
-- **Per-agent attachment.** A guardrail is attached to an agent at definition time (decorator) or at instantiation (runtime wrapper). The wrapped agent now produces responses carrying guardrail verdicts.
+- **Per-agent attachment.** A guardrail is wired to an agent at definition or instantiation time. The wrapped agent now produces responses carrying guardrail verdicts.
 - **Provider choice.** The team picks a provider — or a composition — based on the agent's risk profile. Content-moderation-only for low-stakes interactive tools; LLM-judge for science-output agents; both, fail-fast, for production scientific assistants.
 - **Per-domain tuning.** Each agent tunes the *categories* the judge cares about. A code-search agent emphasizes verification and hallucination categories; a CMR agent emphasizes consistency and attribution; a generation agent might emphasize overgeneralization and positivity bias.
 
 The result is a single, uniform safety surface across the agent suite, with knobs that match the science of each agent's task rather than a one-size-fits-all filter.
-
-## The two providers
-
-AKD ships two complementary guardrail providers. They are designed to be used together, not in competition:
-
-- **[Granite Guardian](./granite/)** — IBM Granite Guardian content moderation. Fast, opinionated, content-focused. Covers jailbreak, violence, sexual content, profanity, social bias, unethical behavior, harm, plus RAG-specific checks (groundedness, relevance, answer relevance). Runs locally via Ollama.
-- **[Risk Agent](./risk-agent/)** — LLM-judge that evaluates outputs against the IBM Risk Atlas and a NASA-IMPACT Science Literature Risk taxonomy. Slower but domain-aware; detects hallucination, attribution gaps, consistency issues, overgeneralization, outdated confidence, and multidisciplinary failures. Uses a DAG-based, importance-weighted evaluation graph.
-
-### When to use which
-
-| You need… | Use |
-| --- | --- |
-| Input-side content moderation (prompt injection, harmful requests) | Granite Guardian (single-risk or multi-risk) |
-| Fast, low-cost output filtering for clearly harmful content | Granite Guardian |
-| Science-specific output quality assessment (hallucination, attribution, consistency) | Risk Agent |
-| Full-stack safety + science-risk evaluation | Granite Guardian **>>** Risk Agent (fail-fast) |
 
 ## What this directory is NOT
 
@@ -81,7 +65,25 @@ AKD ships two complementary guardrail providers. They are designed to be used to
 - IBM watsonx.governance — *AI agent compliance with watsonx.governance.* [ibm.com/docs/en/watsonx/saas?topic=atlas-ai-agent-compliance](https://www.ibm.com/docs/en/watsonx/saas?topic=atlas-ai-agent-compliance) — the enterprise framing this project's Risk Atlas integration follows.
 - IBM AI Risk Atlas. [ibm.com/docs/en/watsonx/saas?topic=overview-ai-risk-atlas](https://www.ibm.com/docs/en/watsonx/saas?topic=overview-ai-risk-atlas) — source of the `AtlasRiskCategory` taxonomy used by the Risk Agent.
 
-## Implementation reference
+---
+
+## Components
+
+AKD ships two complementary guardrail providers. They are designed to be used together, not in competition:
+
+- **[Granite Guardian](./granite/)** — IBM Granite Guardian content moderation. Fast, opinionated, content-focused. Covers jailbreak, violence, sexual content, profanity, social bias, unethical behavior, harm, plus RAG-specific checks (groundedness, relevance, answer relevance). Runs locally via Ollama.
+- **[Risk Agent](./risk-agent/)** — LLM-judge that evaluates outputs against the IBM Risk Atlas and a NASA-IMPACT Science Literature Risk taxonomy. Slower but domain-aware; detects hallucination, attribution gaps, consistency issues, overgeneralization, outdated confidence, and multidisciplinary failures. Uses a DAG-based, importance-weighted evaluation graph.
+
+### When to use which
+
+| You need… | Use |
+| --- | --- |
+| Input-side content moderation (prompt injection, harmful requests) | Granite Guardian (single-risk or multi-risk) |
+| Fast, low-cost output filtering for clearly harmful content | Granite Guardian |
+| Science-specific output quality assessment (hallucination, attribution, consistency) | Risk Agent |
+| Full-stack safety + science-risk evaluation | Granite Guardian **>>** Risk Agent (fail-fast) |
+
+## Developer reference
 
 A compact summary of the developer-facing API. Reach for these when wiring guardrails into code; sub-provider docs go deeper.
 
