@@ -3,13 +3,13 @@
 ## From source (current active branch)
 
 ```bash
-pip install git+https://github.com/NASA-IMPACT/accelerated-discovery.git@develop
+pip install git+https://github.com/NASA-IMPACT/akd-core.git@develop
 ```
 
 ## With `uv` (recommended for AKD development)
 
 ```bash
-uv pip install git+https://github.com/NASA-IMPACT/accelerated-discovery.git@develop
+uv pip install git+https://github.com/NASA-IMPACT/akd-core.git@develop
 ```
 
 ## Key runtime dependencies
@@ -25,8 +25,8 @@ uv pip install git+https://github.com/NASA-IMPACT/accelerated-discovery.git@deve
 ## Local development
 
 ```bash
-git clone https://github.com/NASA-IMPACT/accelerated-discovery.git
-cd accelerated-discovery
+git clone https://github.com/NASA-IMPACT/akd-core.git
+cd akd-core
 git checkout develop
 uv venv --python 3.12
 uv sync

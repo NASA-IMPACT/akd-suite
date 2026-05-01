@@ -58,4 +58,4 @@ Common patterns:
 
 ## Upstream
 
-Implementation: `akd.guardrails.providers.risk_agent` in [NASA-IMPACT/accelerated-discovery](https://github.com/NASA-IMPACT/accelerated-discovery). Category loaders: `akd.guardrails.categories.atlas`.
+Implementation: `akd.guardrails.providers.risk_agent` in [NASA-IMPACT/akd-core](https://github.com/NASA-IMPACT/akd-core). Category loaders: `akd.guardrails.categories.atlas`.

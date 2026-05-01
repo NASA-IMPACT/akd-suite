@@ -1,6 +1,6 @@
 # Flow — Backend
 
-A high-level overview of [`akd-framework`](https://github.com/NASA-IMPACT/akd-framework), the FastAPI + LangGraph backend that powers Flow.
+A high-level overview of [`akd-services`](https://github.com/NASA-IMPACT/akd-services), the FastAPI + LangGraph backend that powers Flow.
 
 ## Tech stack
 
@@ -38,7 +38,7 @@ On lifespan startup, `main.py`:
 4. Unregisters retired agent ids (legacy planners had different names).
 5. Starts the FastAPI app.
 
-The authoritative registration list is in the upstream `main.py`. It is mirrored in this wiki at [`../frameworks/akd-ext/agents-index.md`](../frameworks/akd-ext/agents-index.md).
+The authoritative registration list is in the upstream `main.py`. It is mirrored in `akd-suite` at [`../frameworks/akd-ext/agents-index.md`](../frameworks/akd-ext/agents-index.md).
 
 ## Request lifecycle
 
@@ -87,4 +87,4 @@ The authoritative registration list is in the upstream `main.py`. It is mirrored
 - [`streaming.md`](./streaming.md) — the SSE event model.
 - [`deployment.md`](./deployment.md) — how the backend is deployed (Docker, CDK, Helm).
 - [`../frameworks/akd-ext/`](../frameworks/akd-ext/) — what the backend imports to define agents.
-- Upstream repo: [`NASA-IMPACT/akd-framework`](https://github.com/NASA-IMPACT/akd-framework).
+- Upstream repo: [`NASA-IMPACT/akd-services`](https://github.com/NASA-IMPACT/akd-services).

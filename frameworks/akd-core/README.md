@@ -2,7 +2,7 @@
 
 **akd-core** is AKD's foundational Python framework. Every domain agent, tool, and guardrail in AKD is built on primitives defined here.
 
-Repo: [NASA-IMPACT/accelerated-discovery](https://github.com/NASA-IMPACT/accelerated-discovery)
+Repo: [NASA-IMPACT/akd-core](https://github.com/NASA-IMPACT/akd-core)
 Python package: `akd`
 
 ## What akd-core provides

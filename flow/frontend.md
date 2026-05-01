@@ -1,6 +1,6 @@
 # Flow — Frontend
 
-A high-level overview of [`ad-nextjs-ui`](https://github.com/NASA-IMPACT/ad-nextjs-ui), the Next.js frontend for AKD Flow.
+A high-level overview of [`akd-flow`](https://github.com/NASA-IMPACT/akd-flow), the Next.js frontend for AKD Flow.
 
 ## Tech stack
 
@@ -51,7 +51,7 @@ No WebSockets are used — streaming is pure HTTP SSE.
 
 Configured via `.env.local`:
 
-- `NEXT_PUBLIC_BACKEND_URL` — the Flow backend (`akd-framework`) base URL.
+- `NEXT_PUBLIC_BACKEND_URL` — the Flow backend (`akd-services`) base URL.
 - `NEXT_PUBLIC_FACTUALITY_PIPELINE_ENDPOINT` — the FactReasoner service URL.
 - Additional provider / region vars as needed.
 
@@ -79,4 +79,4 @@ Nodes that accept file attachments surface a file picker. Uploaded files go to `
 - [`user-guide.md`](./user-guide.md) — the user-facing description.
 - [`streaming.md`](./streaming.md) — the SSE event details.
 - [`backend.md`](./backend.md) — what the frontend talks to.
-- Upstream repo: [`NASA-IMPACT/ad-nextjs-ui`](https://github.com/NASA-IMPACT/ad-nextjs-ui).
+- Upstream repo: [`NASA-IMPACT/akd-flow`](https://github.com/NASA-IMPACT/akd-flow).

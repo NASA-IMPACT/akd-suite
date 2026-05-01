@@ -4,7 +4,7 @@ The two Python packages that form AKD's foundation.
 
 | Package | Repo | Role |
 | --- | --- | --- |
-| [`akd-core`](./akd-core/) | [NASA-IMPACT/accelerated-discovery](https://github.com/NASA-IMPACT/accelerated-discovery) | Base primitives: `BaseAgent`, `BaseTool`, streaming, human-in-the-loop, guardrails, planner |
+| [`akd-core`](./akd-core/) | [NASA-IMPACT/akd-core](https://github.com/NASA-IMPACT/akd-core) | Base primitives: `BaseAgent`, `BaseTool`, streaming, human-in-the-loop, guardrails, planner |
 | [`akd-ext`](./akd-ext/) | [NASA-IMPACT/akd-ext](https://github.com/NASA-IMPACT/akd-ext) | Domain extensions: OpenAI Agents SDK integration, MCP glue, the published domain agents and tools |
 
 ## When to use which

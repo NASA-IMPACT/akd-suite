@@ -2,7 +2,11 @@
 
 **AKD** is a NASA-IMPACT program that accelerates scientific knowledge discovery — data, code, and tools — across NASA's Science Mission Directorate divisions. It combines a multi-agent framework, a workflow-oriented web product, and an experimental lab into a single ecosystem.
 
-This repository is the **public documentation hub** for everything AKD. Browse here first.
+This repository (`akd-suite`) is the **public documentation hub** for everything AKD. Browse here first.
+
+> **Broader context:**
+> - [NASA-IMPACT/AI-Agents-for-Science](https://github.com/NASA-IMPACT/AI-Agents-for-Science) — the umbrella NASA-IMPACT initiative on AI agents for science, which AKD is a part of.
+> - [NASA-IMPACT/akd-care](https://github.com/NASA-IMPACT/akd-care) — the underlying **CARE (Collaborative Agent Reasoning Engineering)** methodology used to design AKD's domain agents: a staged, artifact-driven discipline across five phases (scope, key-info elicitation, reasoning policy, prompt architecture, benchmarking).
 
 ---
 
@@ -10,7 +14,7 @@ This repository is the **public documentation hub** for everything AKD. Browse h
 
 ```
                  ┌─────────────────────────────┐
-                 │   akd (this wiki)           │
+                 │   akd-suite                 │
                  │   one-stop documentation    │
                  └──────────────┬──────────────┘
                                 │
@@ -48,12 +52,12 @@ This repository is the **public documentation hub** for everything AKD. Browse h
 
 ## The five AKD working repos
 
-This wiki references but does not replace the five repos where AKD code lives:
+`akd-suite` references but does not replace the five repos where AKD code lives:
 
-- **[akd-core](https://github.com/NASA-IMPACT/accelerated-discovery)** — base framework: `BaseAgent`, `BaseTool`, streaming events, guardrails, planner. Python package `akd`.
+- **[akd-core](https://github.com/NASA-IMPACT/akd-core)** — base framework: `BaseAgent`, `BaseTool`, streaming events, guardrails, planner. Python package `akd`.
 - **[akd-ext](https://github.com/NASA-IMPACT/akd-ext)** — domain agents and tools. Python package `akd_ext`.
-- **[akd-framework](https://github.com/NASA-IMPACT/akd-framework)** — FastAPI + LangGraph backend, the runtime behind Flow.
-- **[ad-nextjs-ui](https://github.com/NASA-IMPACT/ad-nextjs-ui)** — Next.js frontend for Flow.
+- **[akd-services](https://github.com/NASA-IMPACT/akd-services)** — FastAPI + LangGraph backend, the runtime behind Flow.
+- **[akd-flow](https://github.com/NASA-IMPACT/akd-flow)** — Next.js frontend for Flow.
 - **[akd-labs](https://github.com/NASA-IMPACT/akd-labs)** — multi-tenant lab and benchmarking platform.
 
 See [`docs/ecosystem.md`](./docs/ecosystem.md) for the full narrative.

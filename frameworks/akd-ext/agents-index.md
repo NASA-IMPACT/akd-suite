@@ -24,4 +24,4 @@ Several of the published agents (Gap and the four CM1 stages) carry `INTERNAL ON
 
 ## Source
 
-Registration happens in the Flow backend (`akd-framework`) at startup. The authoritative list is in `src/api/runtime/app/main.py` of [NASA-IMPACT/akd-framework](https://github.com/NASA-IMPACT/akd-framework).
+Registration happens in the Flow backend (`akd-services`) at startup. The authoritative list is in `src/api/runtime/app/main.py` of [NASA-IMPACT/akd-services](https://github.com/NASA-IMPACT/akd-services).

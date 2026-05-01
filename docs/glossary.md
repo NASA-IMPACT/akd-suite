@@ -10,7 +10,7 @@ Acronyms and terms that appear throughout the AKD documentation.
 
 ## Products in the AKD ecosystem
 
-- **AKD Flow** — the public multi-agent workflow product: `flow.akd.odsi.io` (backend from `akd-framework`, frontend from `ad-nextjs-ui`).
+- **AKD Flow** — the public multi-agent workflow product: `flow.akd.odsi.io` (backend from `akd-services`, frontend from `akd-flow`).
 - **AKD Labs** — the agent playground and benchmarking tool: `labs.akd.odsi.io`.
 
 ## Frameworks
@@ -22,7 +22,7 @@ Acronyms and terms that appear throughout the AKD documentation.
 
 - **MCP** — Model Context Protocol. A standard for hosting tools that an LLM agent can call. Most AKD data-discovery agents talk to their upstream APIs via hosted MCP servers.
 - **HITL** — Human-in-the-Loop. A design pattern where an agent pauses to request input, approval, or clarification from a human before continuing.
-- **CARE** — Collaborative Agent Reasoning Engineering. A NASA-IMPACT methodology used by several AKD agents (CMR CARE, Code Search CARE). Emphasizes transparency, human control, and non-prescriptive output.
+- **CARE** — Collaborative Agent Reasoning Engineering. NASA-IMPACT's staged, artifact-driven methodology for engineering LLM agents — five phases: scope and decompose, key-information elicitation, reasoning policy and guardrails, prompt architecture and tool orchestration, benchmarking. Documented in [`NASA-IMPACT/akd-care`](https://github.com/NASA-IMPACT/akd-care). Used by several AKD agents (CMR CARE, Code Search CARE); emphasizes transparency, human control, and non-prescriptive output.
 - **Guardrail** — an input or output filter applied to an agent. AKD's guardrails are composable via `&` (AND), `|` (OR), and `>>` (fail-fast) operators.
 
 ## Data systems queried by AKD agents
@@ -75,4 +75,4 @@ Acronyms and terms that appear throughout the AKD documentation.
 - **bibcode** — ADS's unique paper identifier (e.g., `2020ApJ...890...85W`).
 - **SSE** — Server-Sent Events. The HTTP streaming protocol Flow uses to push workflow events to the frontend.
 - **LiteLLM** — a multi-provider LLM SDK used by akd-core to stay model-agnostic.
-- **LangGraph** — a stateful graph-based agent orchestration library used by akd-framework.
+- **LangGraph** — a stateful graph-based agent orchestration library used by akd-services.

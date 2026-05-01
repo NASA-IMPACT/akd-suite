@@ -17,9 +17,9 @@ AKD is not a single codebase. It's a layered set of repositories and products th
 ┌───────────────────────────────┐  ┌──────────────────────────────┐
 │ RUNTIMES                      │  │ RUNTIMES                     │
 │                               │  │                              │
-│ akd-framework                 │  │ akd-labs                     │
+│ akd-services                  │  │ akd-labs                     │
 │ FastAPI + LangGraph           │  │ FastAPI + Next.js            │
-│ ad-nextjs-ui                  │  │ (multi-tenant)               │
+│ akd-flow                      │  │ (multi-tenant)               │
 │ Next.js 15 + React Flow       │  │                              │
 └───────────────┬───────────────┘  └──────────────────────────────┘
                 │
@@ -41,10 +41,10 @@ AKD is not a single codebase. It's a layered set of repositories and products th
 
 | Repo | Role | Language | Deployed as |
 | --- | --- | --- | --- |
-| [`NASA-IMPACT/accelerated-discovery`](https://github.com/NASA-IMPACT/accelerated-discovery) (alias: *akd-core*) | Base framework — the primitives every AKD agent and tool is built on | Python 3.12 | — |
+| [`NASA-IMPACT/akd-core`](https://github.com/NASA-IMPACT/akd-core) | Base framework — the primitives every AKD agent and tool is built on | Python 3.12 | — |
 | [`NASA-IMPACT/akd-ext`](https://github.com/NASA-IMPACT/akd-ext) | Concrete domain agents + tools + MCP glue, built on top of akd-core | Python 3.12 | — |
-| [`NASA-IMPACT/akd-framework`](https://github.com/NASA-IMPACT/akd-framework) | FastAPI backend orchestrating multi-agent workflows via LangGraph, serving the Flow API | Python 3.12 | Flow backend |
-| [`NASA-IMPACT/ad-nextjs-ui`](https://github.com/NASA-IMPACT/ad-nextjs-ui) | Next.js 15 frontend: natural-language planner + visual workflow canvas + streaming results | TypeScript / React 19 | Flow frontend |
+| [`NASA-IMPACT/akd-services`](https://github.com/NASA-IMPACT/akd-services) | FastAPI backend orchestrating multi-agent workflows via LangGraph, serving the Flow API | Python 3.12 | Flow backend |
+| [`NASA-IMPACT/akd-flow`](https://github.com/NASA-IMPACT/akd-flow) | Next.js 15 frontend: natural-language planner + visual workflow canvas + streaming results | TypeScript / React 19 | Flow frontend |
 | [`NASA-IMPACT/akd-labs`](https://github.com/NASA-IMPACT/akd-labs) | Multi-tenant agent lab with chat-based testing, trace logs, and benchmark runner | Python + TypeScript | Labs |
 
 Backend + frontend together are commonly called **"AKD Flow"**; the lab is called **"AKD Labs"**.
@@ -64,13 +64,13 @@ See [`agents/cmr/`](../agents/cmr/) for the knowledge layer and [`frameworks/akd
 
 ### 2. The Flow backend serves the agent over HTTP
 
-`akd-framework` pins specific versions of `akd-core` and `akd-ext` as dependencies. On startup, it imports those agent classes and registers each one under a short agent id. When a user's workflow arrives, the backend looks up the agent, instantiates it, wraps it with optional guardrails, and streams its results back as Server-Sent Events.
+`akd-services` pins specific versions of `akd-core` and `akd-ext` as dependencies. On startup, it imports those agent classes and registers each one under a short agent id. When a user's workflow arrives, the backend looks up the agent, instantiates it, wraps it with optional guardrails, and streams its results back as Server-Sent Events.
 
 See [`flow/architecture.md`](../flow/architecture.md).
 
 ### 3. The Flow frontend renders the workflow
 
-`ad-nextjs-ui` consumes the SSE stream and renders the running workflow visually — nodes lighting up as agents execute, results unfolding in place, and a chat-style planner for building or refining workflows in natural language.
+`akd-flow` consumes the SSE stream and renders the running workflow visually — nodes lighting up as agents execute, results unfolding in place, and a chat-style planner for building or refining workflows in natural language.
 
 See [`flow/frontend.md`](../flow/frontend.md).
 
@@ -85,7 +85,7 @@ See [`flow/frontend.md`](../flow/frontend.md).
 
 See [`labs/`](../labs/) for the full story, and [`labs/publishing-to-flow.md`](../labs/publishing-to-flow.md) for the path from a Labs-validated agent to a Flow-published one (today's static mechanism and the planned artifact-based future).
 
-### 5. This wiki is the canonical documentation
+### 5. `akd-suite` is the canonical documentation hub
 
 When someone says "AKD," they can point here. Every domain agent has a documented knowledge artifact under [`agents/`](../agents/). Every reusable guardrail has a page under [`guardrails/`](../guardrails/). Every framework concept has a guide under [`frameworks/`](../frameworks/). Every product has a user-facing write-up under [`flow/`](../flow/) or [`labs/`](../labs/).
 

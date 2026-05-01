@@ -54,4 +54,4 @@ Like every AKD guardrail, Granite Guardian plugs into the composition operators 
 
 ## Upstream
 
-Implementation: `akd.guardrails.providers.granite_guardian` in [NASA-IMPACT/accelerated-discovery](https://github.com/NASA-IMPACT/accelerated-discovery). The category enums live under `akd.guardrails.categories.granite`.
+Implementation: `akd.guardrails.providers.granite_guardian` in [NASA-IMPACT/akd-core](https://github.com/NASA-IMPACT/akd-core). The category enums live under `akd.guardrails.categories.granite`.

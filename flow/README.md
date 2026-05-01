@@ -2,8 +2,8 @@
 
 **AKD Flow** is the public multi-agent workflow product. It combines:
 
-- A **FastAPI + LangGraph backend** (from [`NASA-IMPACT/akd-framework`](https://github.com/NASA-IMPACT/akd-framework)) that hosts the AKD agents and orchestrates them as workflow graphs.
-- A **Next.js 15 frontend** (from [`NASA-IMPACT/ad-nextjs-ui`](https://github.com/NASA-IMPACT/ad-nextjs-ui)) that provides a natural-language planner and a visual workflow canvas.
+- A **FastAPI + LangGraph backend** (from [`NASA-IMPACT/akd-services`](https://github.com/NASA-IMPACT/akd-services)) that hosts the AKD agents and orchestrates them as workflow graphs.
+- A **Next.js 15 frontend** (from [`NASA-IMPACT/akd-flow`](https://github.com/NASA-IMPACT/akd-flow)) that provides a natural-language planner and a visual workflow canvas.
 
 **Live deployment:** [flow.akd.odsi.io](https://flow.akd.odsi.io)
 
@@ -19,8 +19,8 @@
 
 - [`user-guide.md`](./user-guide.md) — end-to-end walkthrough for a working scientist.
 - [`architecture.md`](./architecture.md) — how backend and frontend fit together.
-- [`backend.md`](./backend.md) — high-level look at `akd-framework`.
-- [`frontend.md`](./frontend.md) — high-level look at `ad-nextjs-ui`.
+- [`backend.md`](./backend.md) — high-level look at `akd-services`.
+- [`frontend.md`](./frontend.md) — high-level look at `akd-flow`.
 - [`api-overview.md`](./api-overview.md) — conceptual API surface.
 - [`streaming.md`](./streaming.md) — how streaming events reach the UI.
 - [`deployment.md`](./deployment.md) — Docker / AWS / Helm deployment topology.

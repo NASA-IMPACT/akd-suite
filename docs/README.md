@@ -5,7 +5,7 @@ Cross-cutting conceptual documentation for the AKD ecosystem. These pages are no
 ## Pages
 
 - [`what-is-akd.md`](./what-is-akd.md) — the program description for an outside reader. What AKD is, why it exists, who it's for.
-- [`ecosystem.md`](./ecosystem.md) — the canonical map of the five AKD working repos plus this wiki. Contains the architecture diagram.
+- [`ecosystem.md`](./ecosystem.md) — the canonical map of the five AKD working repos plus `akd-suite` (this docs hub). Contains the architecture diagram.
 - [`glossary.md`](./glossary.md) — acronyms and terms used throughout (CMR, PDS, SDE, MCP, HITL, CARE, etc.).
 - [`mcp.md`](./mcp.md) — how AKD uses Model Context Protocol. What hosted MCP servers exist, how agents wire them, when to use in-process `@mcp_tool` instead.
 - [`streaming-and-hitl.md`](./streaming-and-hitl.md) — the streaming event model and the human-in-the-loop pattern.

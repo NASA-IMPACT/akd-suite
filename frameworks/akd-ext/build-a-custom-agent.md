@@ -169,7 +169,7 @@ class MyAgent(OpenAIBaseAgent[...]):
 
 ## Registering the agent with Flow
 
-To have the agent appear as a published Flow agent, register it in `akd-framework`'s backend startup (see `akd_framework/src/api/runtime/app/main.py` in the upstream repo). The registration pattern is:
+To have the agent appear as a published Flow agent, register it in `akd-services`'s backend startup (see `akd-services/src/api/runtime/app/main.py` in the upstream repo). The registration pattern is:
 
 ```python
 registry.register_agent(agent_class=MyAgent, agent_id="my_agent")

@@ -4,7 +4,7 @@ High-level topology of how Flow is deployed locally and in production.
 
 ## Local development (Docker Compose)
 
-The simplest path: `docker compose up` against `akd-framework`'s stack. This brings up:
+The simplest path: `docker compose up` against `akd-services`'s stack. This brings up:
 
 | Service | Port (host) | Purpose |
 | --- | --- | --- |
@@ -16,21 +16,21 @@ The simplest path: `docker compose up` against `akd-framework`'s stack. This bri
 | `factuality` | `8000` | Separate FactReasoner FastAPI service for fact verification |
 | `api` | `8001` | Main FastAPI backend |
 
-The frontend (`ad-nextjs-ui`) is typically run separately via `npm run dev` on port `3000`, pointed at `http://localhost:8001` through `NEXT_PUBLIC_BACKEND_URL`.
+The frontend (`akd-flow`) is typically run separately via `npm run dev` on port `3000`, pointed at `http://localhost:8001` through `NEXT_PUBLIC_BACKEND_URL`.
 
 ### Getting started
 
 ```bash
 # Backend
-git clone https://github.com/NASA-IMPACT/akd-framework.git
-cd akd-framework
+git clone https://github.com/NASA-IMPACT/akd-services.git
+cd akd-services
 cp .env.example .env            # fill in OPENAI_API_KEY, MCP URLs / keys, etc.
 uv sync
 docker compose up
 
 # Frontend (in a separate terminal)
-git clone https://github.com/NASA-IMPACT/ad-nextjs-ui.git
-cd ad-nextjs-ui
+git clone https://github.com/NASA-IMPACT/akd-flow.git
+cd akd-flow
 cp .env.local.example .env.local
 npm install
 npm run dev
@@ -38,7 +38,7 @@ npm run dev
 
 ## Environment variables of note
 
-### Backend (`akd-framework`)
+### Backend (`akd-services`)
 
 - LLM provider credentials (OpenAI, Anthropic, etc., depending on configuration).
 - MCP server URLs and auth keys: `CMR_MCP_URL`, `PDS_MCP_URL`, `PDS_MCP_KEY`, `CODE_SEARCH_MCP_URL`, `CODE_SEARCH_MCP_KEY`, `ADS_SEARCH_MCP_URL`, `CODE_SEARCH_ADS_SEARCH_KEY`, `ASTRO_MCP_URL`, `EXPERIMENT_STATUS_MCP_URL`, `EXPERIMENT_STATUS_MCP_KEY`.
@@ -46,7 +46,7 @@ npm run dev
 - Admin bootstrap: credentials for the first admin user.
 - FactReasoner endpoint (when running in a separate container).
 
-### Frontend (`ad-nextjs-ui`)
+### Frontend (`akd-flow`)
 
 - `NEXT_PUBLIC_BACKEND_URL` — backend base URL.
 - `NEXT_PUBLIC_FACTUALITY_PIPELINE_ENDPOINT` — FactReasoner URL (if enabled).
@@ -74,4 +74,4 @@ The specific hosting of `flow.akd.odsi.io` and `labs.akd.odsi.io` is managed by 
 
 - [`backend.md`](./backend.md) — what runs inside the `api` container.
 - [`frontend.md`](./frontend.md) — what the frontend needs.
-- Upstream ops detail: [`NASA-IMPACT/akd-framework`](https://github.com/NASA-IMPACT/akd-framework) and [`NASA-IMPACT/ad-nextjs-ui`](https://github.com/NASA-IMPACT/ad-nextjs-ui).
+- Upstream ops detail: [`NASA-IMPACT/akd-services`](https://github.com/NASA-IMPACT/akd-services) and [`NASA-IMPACT/akd-flow`](https://github.com/NASA-IMPACT/akd-flow).

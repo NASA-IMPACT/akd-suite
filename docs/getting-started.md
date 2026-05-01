@@ -45,4 +45,4 @@ Go to **Labs** at [labs.akd.odsi.io](https://labs.akd.odsi.io). You can author a
 
 ## I want to cite AKD or reference it externally
 
-When referring to AKD, use the program name **Accelerated Knowledge Discovery** (NASA-IMPACT). Point to this wiki, or directly to the upstream repos listed in [`ecosystem.md`](./ecosystem.md).
+When referring to AKD, use the program name **Accelerated Knowledge Discovery** (NASA-IMPACT). Point to `akd-suite` (this docs hub), or directly to the upstream repos listed in [`ecosystem.md`](./ecosystem.md).

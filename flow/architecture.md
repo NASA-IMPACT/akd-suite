@@ -1,6 +1,6 @@
 # Flow — Architecture
 
-AKD Flow is the pairing of a FastAPI backend ([`akd-framework`](https://github.com/NASA-IMPACT/akd-framework)) with a Next.js frontend ([`ad-nextjs-ui`](https://github.com/NASA-IMPACT/ad-nextjs-ui)). Together they host the published AKD agents and expose them to users through a natural-language planner and a visual workflow canvas.
+AKD Flow is the pairing of a FastAPI backend ([`akd-services`](https://github.com/NASA-IMPACT/akd-services)) with a Next.js frontend ([`akd-flow`](https://github.com/NASA-IMPACT/akd-flow)). Together they host the published AKD agents and expose them to users through a natural-language planner and a visual workflow canvas.
 
 ## The big picture
 
@@ -8,7 +8,7 @@ AKD Flow is the pairing of a FastAPI backend ([`akd-framework`](https://github.c
                     ┌──────────────────────────────┐
                     │  User's browser              │
                     │                              │
-                    │  ad-nextjs-ui (Next.js 15)   │
+                    │  akd-flow (Next.js 15)       │
                     │  - Planner chat              │
                     │  - React Flow canvas         │
                     │  - SSE stream consumer       │
@@ -18,7 +18,7 @@ AKD Flow is the pairing of a FastAPI backend ([`akd-framework`](https://github.c
                                      │ SSE streaming
                                      ▼
                     ┌──────────────────────────────┐
-                    │  akd-framework (FastAPI)     │
+                    │  akd-services (FastAPI)      │
                     │                              │
                     │  - /api/v1/workflows/* (CRUD │
                     │    + execution)              │
@@ -55,7 +55,7 @@ AKD Flow is the pairing of a FastAPI backend ([`akd-framework`](https://github.c
                                            └──────────┘
 ```
 
-## Backend summary (akd-framework)
+## Backend summary (akd-services)
 
 - **FastAPI** service, Python 3.12, typically served via `uvicorn` on port 8001.
 - **LangGraph** orchestrates multi-agent workflows as state graphs, with PostgreSQL as the checkpointer (workflows resume cleanly across process restarts — important for HITL).
@@ -68,7 +68,7 @@ AKD Flow is the pairing of a FastAPI backend ([`akd-framework`](https://github.c
 
 See [`backend.md`](./backend.md) for a deeper tour.
 
-## Frontend summary (ad-nextjs-ui)
+## Frontend summary (akd-flow)
 
 - **Next.js 15** (App Router) + **React 19** + **TypeScript 5**.
 - **Tailwind CSS 4** + **Radix UI** for UI primitives.

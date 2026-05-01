@@ -116,4 +116,4 @@ If your tool wants to emit fine-grained progress while it runs, use the streamin
 ## What to do next
 
 - If you want your tool to be callable through MCP (the standard pattern for akd-ext agents), add the `@mcp_tool` decorator — see [`../akd-ext/build-a-custom-tool.md`](../akd-ext/build-a-custom-tool.md).
-- Browse real tool implementations in the [`akd.tools`](https://github.com/NASA-IMPACT/accelerated-discovery) tree of akd-core, and [`akd_ext.tools`](https://github.com/NASA-IMPACT/akd-ext) in akd-ext.
+- Browse real tool implementations in the [`akd.tools`](https://github.com/NASA-IMPACT/akd-core) tree of akd-core, and [`akd_ext.tools`](https://github.com/NASA-IMPACT/akd-ext) in akd-ext.

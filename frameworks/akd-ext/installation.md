@@ -41,4 +41,4 @@ akd-ext targets Python 3.12.
 
 ## Deployed versions
 
-The Flow backend (`akd-framework`) pins a specific git rev of both `akd` and `akd-ext` via its `pyproject.toml`. When a new agent or tool lands in akd-ext, picking it up in Flow requires bumping the pinned rev and redeploying. See [`labs/publishing-to-flow.md`](../../labs/publishing-to-flow.md) for the current promotion story.
+The Flow backend (`akd-services`) pins a specific git rev of both `akd` and `akd-ext` via its `pyproject.toml`. When a new agent or tool lands in akd-ext, picking it up in Flow requires bumping the pinned rev and redeploying. See [`labs/publishing-to-flow.md`](../../labs/publishing-to-flow.md) for the current promotion story.
