@@ -10,24 +10,42 @@ This repository (`akd-suite`) is the **public documentation hub** for everything
 
 ---
 
-## The ecosystem at a glance
+## Agent development lifecycle
 
+```mermaid
+flowchart TD
+    classDef phase   fill:#e8f0fe,stroke:#4a90e2,stroke-width:2px,color:#000
+    classDef labs    fill:#e6f4ea,stroke:#2e7d32,stroke-width:1.5px,color:#000
+    classDef gate    fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#000
+    classDef publish fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#000
+
+    Design["DESIGN<br/>uses CARE methodology<br/>akd-care"]:::phase
+
+    subgraph BB [Build and Benchmark - Internal - akd-labs - labs.akd.odsi.io]
+        direction LR
+        CARE["CARE v2:<br/>Interview Process<br/>info elicitation"]:::labs
+        Art["Artefacts<br/>design outputs"]:::labs
+        Play["Agent Playground"]:::labs
+        Bench["Benchmarks<br/>evaluate vs<br/>defined requirements"]:::labs
+
+        CARE --> Art
+        CARE --> Play
+        Art --> Bench
+        Play --> Bench
+    end
+
+    Gate{{"Review Gate<br/>SME Lead approval<br/>readiness review"}}:::gate
+
+    Flow["Flow UI: Integration<br/>akd-flow + akd-services<br/>flow.akd.odsi.io"]:::publish
+    GH["GitHub: Code and Artefacts<br/>akd-ext repo"]:::publish
+
+    Design --> BB
+    BB --> Gate
+    Gate -- approved --> Flow
+    Gate -- approved --> GH
 ```
-                 ┌─────────────────────────────┐
-                 │   akd-suite                 │
-                 │   one-stop documentation    │
-                 └──────────────┬──────────────┘
-                                │
-      ┌─────────────────────────┼─────────────────────────┐
-      │                         │                         │
-  ┌───▼────┐             ┌──────▼──────┐           ┌──────▼─────┐
-  │ akd-   │             │   AKD Flow  │           │  AKD Labs  │
-  │ core   │◄────────────┤ flow.akd... │           │ labs.akd...│
-  │ akd-ext│             │ (backend +  │           │ (playground│
-  └────────┘             │  frontend)  │           │ + benchmark)│
-  framework              └─────────────┘           └────────────┘
-  libraries
-```
+
+> `akd-suite` (this repo) documents the entire lifecycle above. `akd-core` is the shared base library used by `akd-ext` and `akd-services` — a substrate, not a phase.
 
 - [**Frameworks**](./frameworks/) — the Python libraries that define how AKD agents and tools are built: `akd-core` (primitives) and `akd-ext` (domain agents and tools).
 - [**Agents**](./agents/) — the domain agents published to Flow: CMR, PDS, Code Search, Astro, Gap, and the Closed-Loop CM1 pipeline.
