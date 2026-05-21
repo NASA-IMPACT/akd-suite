@@ -1,0 +1,22 @@
+flowchart LR
+    classDef io     fill:#fff8e1,stroke:#8d6e63,stroke-width:1.5px,color:#000
+    classDef harn   fill:#e8f0fe,stroke:#0B3D91,stroke-width:2px,color:#000
+    classDef model  fill:#dbeafe,stroke:#0B3D91,stroke-width:3px,color:#000
+    classDef tool   fill:#e6f4ea,stroke:#2e7d32,stroke-width:1.5px,color:#000
+    classDef guard  fill:#ecfdf5,stroke:#047857,stroke-width:1.5px,color:#000
+    classDef hitl   fill:#fff3e0,stroke:#FF6F00,stroke-width:2px,color:#000
+
+    User([User prompt]):::io --> Asm["Prompt assembly<br/>+ memory / scratchpad"]:::harn
+    Asm --> Gin["Guardrails<br/>(input)"]:::guard
+    Gin --> LLM["LLM call"]:::model
+    LLM --> Parse{"Parse"}:::harn
+    Parse -- tool_call --> Tool["Tool / API"]:::tool
+    Tool -- tool_result --> LLM
+    Parse -- needs human --> HITL{{"HITL gate"}}:::hitl
+    HITL -- resume --> LLM
+    Parse -- done --> Gout["Guardrails<br/>(output)"]:::guard
+    Gout --> Resp([Final answer]):::io
+
+    State[("State ·<br/>checkpoints ·<br/>observability")]:::harn -.-> LLM
+    State -.-> Tool
+    State -.-> HITL

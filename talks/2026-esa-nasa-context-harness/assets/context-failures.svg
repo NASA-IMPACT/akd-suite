@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" font-family="Inter, system-ui, sans-serif">
+  <defs>
+    <style>
+      .bg { fill: #faf8f3; }
+      .title { fill: #1f2937; font-size: 44px; font-weight: 700; }
+      .subtitle { fill: #4b5563; font-size: 22px; }
+      .card { fill: #ffffff; stroke: #b91c1c; stroke-width: 3; rx: 14; ry: 14; }
+      .card-bg { fill: #fef2f2; stroke: #b91c1c; stroke-width: 2; rx: 14; ry: 14; }
+      .num { fill: #b91c1c; font-size: 60px; font-weight: 800; font-family: 'JetBrains Mono', monospace; }
+      .name { fill: #1f2937; font-size: 30px; font-weight: 700; }
+      .desc { fill: #1f2937; font-size: 20px; }
+      .rot { fill: #FF6F00; font-size: 28px; font-weight: 700; }
+      .rot-body { fill: #1f2937; font-size: 20px; }
+      .rot-card { fill: #fff8ef; stroke: #FF6F00; stroke-width: 3; rx: 14; ry: 14; }
+      .src { fill: #6b7280; font-size: 16px; font-style: italic; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1600" height="900"/>
+
+  <text x="800" y="68" class="title" text-anchor="middle">Bigger window ≠ better answers</text>
+  <text x="800" y="106" class="subtitle" text-anchor="middle">four ways contexts fail in production</text>
+
+  <!-- 4 quadrants -->
+  <rect class="card" x="120"  y="160" width="700" height="260"/>
+  <rect class="card" x="860"  y="160" width="620" height="260"/>
+  <rect class="card" x="120"  y="440" width="700" height="260"/>
+  <rect class="card" x="860"  y="440" width="620" height="260"/>
+
+  <!-- 01 Poisoning -->
+  <text x="160" y="240" class="num">01</text>
+  <text x="280" y="230" class="name">Poisoning</text>
+  <text x="280" y="280" class="desc">A hallucination, bad tool output,</text>
+  <text x="280" y="310" class="desc">or stale fact lands in context —</text>
+  <text x="280" y="340" class="desc">then propagates downstream as</text>
+  <text x="280" y="370" class="desc">if it were ground truth.</text>
+
+  <!-- 02 Distraction -->
+  <text x="900" y="240" class="num">02</text>
+  <text x="1020" y="230" class="name">Distraction</text>
+  <text x="1020" y="280" class="desc">Window so full of "relevant"</text>
+  <text x="1020" y="310" class="desc">history that the model loses</text>
+  <text x="1020" y="340" class="desc">sight of what the user actually</text>
+  <text x="1020" y="370" class="desc">asked. Attention budget gone.</text>
+
+  <!-- 03 Confusion -->
+  <text x="160" y="520" class="num">03</text>
+  <text x="280" y="510" class="name">Confusion</text>
+  <text x="280" y="560" class="desc">Irrelevant tool outputs, dead</text>
+  <text x="280" y="590" class="desc">references, or stray instructions</text>
+  <text x="280" y="620" class="desc">muddle the next decision. Signal</text>
+  <text x="280" y="650" class="desc">drowned by noise.</text>
+
+  <!-- 04 Clash -->
+  <text x="900" y="520" class="num">04</text>
+  <text x="1020" y="510" class="name">Clash</text>
+  <text x="1020" y="560" class="desc">Two pieces of context disagree.</text>
+  <text x="1020" y="590" class="desc">System prompt says one thing,</text>
+  <text x="1020" y="620" class="desc">retrieved doc the other. The</text>
+  <text x="1020" y="650" class="desc">model picks — sometimes wrong.</text>
+
+  <!-- Context rot banner -->
+  <rect class="rot-card" x="120" y="730" width="1360" height="120"/>
+  <text x="160" y="775" class="rot">Context rot</text>
+  <text x="160" y="810" class="rot-body">Chroma (2025): every frontier model degrades as input grows. Long ≠ thoughtful.</text>
+  <text x="160" y="840" class="rot-body">Treat the window as a finite attention budget, not free storage.</text>
+
+  <text x="800" y="880" class="src" text-anchor="middle">refs: Modarressi et al. "NoLiMa" arXiv:2502.05167 (2025) · Chroma "Context Rot" (2025) · dbreunig.com "How Long Contexts Fail" (2025)</text>
+</svg>

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" font-family="Inter, system-ui, sans-serif">
+  <defs>
+    <style>
+      .bg { fill: #faf8f3; }
+      .title { fill: #1f2937; font-size: 42px; font-weight: 700; }
+      .subtitle { fill: #4b5563; font-size: 22px; }
+      .layer  { stroke-width: 3; rx: 14; ry: 14; }
+      .l-prim { fill: #e8f0fe; stroke: #0B3D91; }
+      .l-acc  { fill: #fff8ef; stroke: #FF6F00; }
+      .l-grn  { fill: #ecfdf5; stroke: #047857; }
+      .l-prp  { fill: #f3e8ff; stroke: #6d28d9; }
+      .l-name { fill: #1f2937; font-size: 28px; font-weight: 700; }
+      .l-desc { fill: #1f2937; font-size: 18px; }
+      .l-mono { fill: #0B3D91; font-size: 16px; font-family: 'JetBrains Mono', monospace; }
+      .side-h { fill: #1f2937; font-size: 24px; font-weight: 700; }
+      .side-b { fill: #4b5563; font-size: 17px; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1600" height="900"/>
+
+  <text x="800" y="58" class="title" text-anchor="middle">Harness engineering @ AKD — the stack</text>
+  <text x="800" y="96" class="subtitle" text-anchor="middle">primitives that wrap every published agent — built once, reused everywhere</text>
+
+  <!-- LAYER 1 — model -->
+  <rect class="layer l-prim" x="120" y="150" width="900" height="100"/>
+  <text x="160" y="195" class="l-name">LLM</text>
+  <text x="160" y="225" class="l-desc">GPT-5 / Claude / Granite — chosen per agent, swappable in config</text>
+
+  <!-- LAYER 2 — BaseAgent / BaseTool -->
+  <rect class="layer l-prim" x="120" y="270" width="900" height="140"/>
+  <text x="160" y="315" class="l-name">BaseAgent · BaseTool</text>
+  <text x="160" y="350" class="l-desc">schema-first: Pydantic input / output / config schemas</text>
+  <text x="160" y="378" class="l-mono">class CMRCareAgent(BaseAgent[InSchema, OutSchema]): ...</text>
+
+  <!-- LAYER 3 — streaming -->
+  <rect class="layer l-prim" x="120" y="430" width="900" height="120"/>
+  <text x="160" y="475" class="l-name">Typed StreamEvents</text>
+  <text x="160" y="510" class="l-desc">starting · running · thinking · tool_calling · tool_result ·</text>
+  <text x="160" y="535" class="l-desc">partial_output · human_input_required · completed · failed</text>
+
+  <!-- LAYER 4 — HITL -->
+  <rect class="layer l-acc" x="120" y="570" width="900" height="100"/>
+  <text x="160" y="615" class="l-name">HITL as a tool</text>
+  <text x="160" y="645" class="l-desc">HumanTool raises → run pauses → state checkpointed → resume with human's answer</text>
+
+  <!-- LAYER 5 — guardrails -->
+  <rect class="layer l-grn" x="120" y="690" width="900" height="100"/>
+  <text x="160" y="735" class="l-name">Composable guardrails</text>
+  <text x="160" y="765" class="l-mono">Granite >> RiskAgent     (and · or · fail-fast)</text>
+
+  <!-- LAYER 6 — orchestrator -->
+  <rect class="layer l-prp" x="120" y="810" width="900" height="60"/>
+  <text x="160" y="850" class="l-name" font-size="22">LangGraph · PostgreSQL checkpoints · FastAPI · SSE</text>
+
+  <!-- RIGHT SIDE — three distinct properties -->
+  <text x="1080" y="195" class="side-h">streaming-native</text>
+  <text x="1080" y="225" class="side-b">every step emits a typed event;</text>
+  <text x="1080" y="250" class="side-b">the UI never polls.</text>
+
+  <text x="1080" y="320" class="side-h">deterministic harness</text>
+  <text x="1080" y="350" class="side-b">~the model loop is a while-loop;</text>
+  <text x="1080" y="375" class="side-b">the value lives in the surrounding</text>
+  <text x="1080" y="400" class="side-b">deterministic code.</text>
+
+  <text x="1080" y="470" class="side-h">composable guardrails</text>
+  <text x="1080" y="500" class="side-b">attach to <tspan font-family="JetBrains Mono, monospace" font-size="16">input</tspan> or <tspan font-family="JetBrains Mono, monospace" font-size="16">output</tspan> of any</text>
+  <text x="1080" y="525" class="side-b">agent, mix &amp; match providers.</text>
+
+  <text x="1080" y="595" class="side-h">HITL as first-class</text>
+  <text x="1080" y="625" class="side-b">approval gates are events, not</text>
+  <text x="1080" y="650" class="side-b">UI hacks. Survive process restart.</text>
+
+  <text x="1080" y="720" class="side-h">checkpointed runs</text>
+  <text x="1080" y="750" class="side-b">LangGraph + Postgres persists</text>
+  <text x="1080" y="775" class="side-b">workflow state for hours / days.</text>
+</svg>

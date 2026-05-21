@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" font-family="Inter, system-ui, sans-serif">
+  <defs>
+    <style>
+      .bg { fill: #faf8f3; }
+      .title { fill: #1f2937; font-size: 44px; font-weight: 700; }
+      .subtitle { fill: #4b5563; font-size: 22px; }
+      .col-l { fill: #fdf4ff; stroke: #9333ea; stroke-width: 3; rx: 16; ry: 16; }
+      .col-r { fill: #e8f0fe; stroke: #0B3D91; stroke-width: 3; rx: 16; ry: 16; }
+      .h-l { fill: #6b21a8; font-size: 30px; font-weight: 800; }
+      .h-r { fill: #0B3D91; font-size: 30px; font-weight: 800; }
+      .tag-l { fill: #fae8ff; stroke: #9333ea; rx: 14; ry: 14; }
+      .tag-r { fill: #dbeafe; stroke: #0B3D91; rx: 14; ry: 14; }
+      .tag-tx-l { fill: #6b21a8; font-size: 16px; font-weight: 600; }
+      .tag-tx-r { fill: #0B3D91; font-size: 16px; font-weight: 600; }
+      .row-h { fill: #1f2937; font-size: 22px; font-weight: 700; }
+      .row-b { fill: #1f2937; font-size: 18px; }
+      .arrow { stroke: #9ca3af; stroke-width: 2; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1600" height="900"/>
+
+  <text x="800" y="60" class="title" text-anchor="middle">Prompt engineering → context engineering</text>
+  <text x="800" y="98" class="subtitle" text-anchor="middle">a string becomes a system — what changes when you scale to scientific agents</text>
+
+  <!-- Two columns -->
+  <rect class="col-l" x="100" y="150" width="680" height="700"/>
+  <rect class="col-r" x="820" y="150" width="680" height="700"/>
+
+  <!-- Headers -->
+  <rect class="tag-l" x="130" y="180" width="240" height="34"/>
+  <text x="250" y="204" class="tag-tx-l" text-anchor="middle">PROMPT ENGINEERING</text>
+  <text x="130" y="270" class="h-l">a clever string</text>
+
+  <rect class="tag-r" x="850" y="180" width="280" height="34"/>
+  <text x="990" y="204" class="tag-tx-r" text-anchor="middle">CONTEXT ENGINEERING</text>
+  <text x="850" y="270" class="h-r">a system that curates</text>
+
+  <!-- Rows -->
+  <text x="130" y="335" class="row-h">artefact</text>
+  <text x="130" y="370" class="row-b">one prompt template; you tweak words.</text>
+  <line class="arrow" x1="100" y1="395" x2="780" y2="395"/>
+
+  <text x="130" y="440" class="row-h">unit of work</text>
+  <text x="130" y="475" class="row-b">a single LLM call.</text>
+  <line class="arrow" x1="100" y1="510" x2="780" y2="510"/>
+
+  <text x="130" y="555" class="row-h">scaling</text>
+  <text x="130" y="590" class="row-b">"add another paragraph."</text>
+  <line class="arrow" x1="100" y1="625" x2="780" y2="625"/>
+
+  <text x="130" y="670" class="row-h">failure mode</text>
+  <text x="130" y="705" class="row-b">wrong wording → wrong answer.</text>
+  <line class="arrow" x1="100" y1="740" x2="780" y2="740"/>
+
+  <text x="130" y="785" class="row-h">evaluation</text>
+  <text x="130" y="820" class="row-b">vibes / spot-check.</text>
+
+  <!-- Right column matching rows -->
+  <text x="850" y="335" class="row-h">artefact</text>
+  <text x="850" y="370" class="row-b">a directory of files + a tool surface + guardrails.</text>
+
+  <text x="850" y="440" class="row-h">unit of work</text>
+  <text x="850" y="475" class="row-b">a run: write → select → compress → isolate, then call.</text>
+
+  <text x="850" y="555" class="row-h">scaling</text>
+  <text x="850" y="590" class="row-b">retrieve / compact / partition across sub-agents.</text>
+
+  <text x="850" y="670" class="row-h">failure mode</text>
+  <text x="850" y="705" class="row-b">poisoning · distraction · confusion · clash · context rot.</text>
+
+  <text x="850" y="785" class="row-h">evaluation</text>
+  <text x="850" y="820" class="row-b">benchmark suites · trajectory evals · reproducibility logs.</text>
+</svg>

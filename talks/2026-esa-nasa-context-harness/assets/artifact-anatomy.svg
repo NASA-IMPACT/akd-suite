@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" font-family="Inter, system-ui, sans-serif">
+  <defs>
+    <style>
+      .bg { fill: #faf8f3; }
+      .title { fill: #1f2937; font-size: 44px; font-weight: 700; }
+      .subtitle { fill: #4b5563; font-size: 22px; }
+      .folder { fill: #fff8ef; stroke: #FF6F00; stroke-width: 3; rx: 12; ry: 12; }
+      .file   { fill: #ffffff; stroke: #0B3D91; stroke-width: 2; rx: 10; ry: 10; }
+      .dir-name { fill: #FF6F00; font-size: 22px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+      .file-name { fill: #0B3D91; font-size: 22px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+      .annot { fill: #4b5563; font-size: 18px; }
+      .pillar { fill: #064e3b; font-size: 16px; font-weight: 700; }
+      .arrow { stroke: #9ca3af; stroke-width: 2; fill: none; }
+      .entry-badge { fill: #FF6F00; rx: 12; ry: 12; }
+      .entry-text { fill: white; font-size: 16px; font-weight: 700; }
+    </style>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9ca3af"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="1600" height="900"/>
+
+  <text x="800" y="60" class="title" text-anchor="middle">Artifact-driven context — AKD &amp; the tutorial agent share this shape</text>
+  <text x="800" y="98" class="subtitle" text-anchor="middle">behavior is written, not coded · each file is consumable knowledge for the LLM</text>
+
+  <!-- Outer artifact folder -->
+  <rect class="folder" x="120" y="150" width="680" height="680"/>
+  <text x="150" y="195" class="dir-name">artifacts/&lt;agent&gt;/</text>
+
+  <!-- Files inside -->
+  <rect class="file" x="160" y="220" width="600" height="58"/>
+  <text x="180" y="258" class="file-name">scope.md</text>
+  <text x="430" y="258" class="annot">role · users · workflow · success</text>
+
+  <rect class="file" x="160" y="294" width="600" height="100"/>
+  <text x="180" y="332" class="file-name">contexts/</text>
+  <text x="180" y="362" class="annot">index.md · &lt;topic&gt;.md · API references</text>
+  <text x="180" y="386" class="annot">existing-systems knowledge, constraints, glossary</text>
+
+  <rect class="file" x="160" y="410" width="600" height="100"/>
+  <text x="180" y="448" class="file-name">tools/</text>
+  <text x="180" y="478" class="annot">index.md · &lt;tool&gt;/index.md</text>
+  <text x="180" y="502" class="annot">inventory the model sees before calling anything</text>
+
+  <rect class="file" x="160" y="526" width="600" height="58"/>
+  <text x="180" y="564" class="file-name">reasoning.md</text>
+  <text x="430" y="564" class="annot">the loop · steps · stop conditions</text>
+
+  <rect class="file" x="160" y="600" width="600" height="58"/>
+  <text x="180" y="638" class="file-name">output.md</text>
+  <text x="430" y="638" class="annot">schema · reproducibility log</text>
+
+  <rect class="file" x="160" y="674" width="600" height="58"/>
+  <text x="180" y="712" class="file-name">guardrails/</text>
+  <text x="430" y="712" class="annot">safety rules · risk policy</text>
+
+  <rect class="file" x="160" y="748" width="600" height="62" stroke="#FF6F00" stroke-width="3"/>
+  <text x="180" y="788" class="file-name" fill="#FF6F00">agents.md</text>
+  <rect class="entry-badge" x="540" y="763" width="170" height="30"/>
+  <text x="625" y="784" class="entry-text" text-anchor="middle">ENTRY POINT</text>
+
+  <!-- Right side — annotations -->
+  <text x="880" y="200" class="annot" font-size="24" font-weight="700" fill="#1f2937">Why this shape works</text>
+
+  <text x="880" y="250" class="pillar">WRITE</text>
+  <text x="880" y="280" class="annot">behavior lives in files, not embedded</text>
+  <text x="880" y="306" class="annot">Python strings — diff-able, reviewable</text>
+
+  <text x="880" y="355" class="pillar">SELECT</text>
+  <text x="880" y="385" class="annot">agent reads <tspan font-family="JetBrains Mono, monospace" font-size="18">agents.md</tspan> first, then pulls in</text>
+  <text x="880" y="411" class="annot">specific files on demand via console tools</text>
+
+  <text x="880" y="460" class="pillar">COMPRESS</text>
+  <text x="880" y="490" class="annot"><tspan font-family="JetBrains Mono, monospace" font-size="18">index.md</tspan> manifests describe each dir —</text>
+  <text x="880" y="516" class="annot">no <tspan font-family="JetBrains Mono, monospace" font-size="18">grep</tspan>, no blanket <tspan font-family="JetBrains Mono, monospace" font-size="18">ls</tspan>; targeted reads</text>
+
+  <text x="880" y="565" class="pillar">ISOLATE</text>
+  <text x="880" y="595" class="annot">each agent has its own artifact tree —</text>
+  <text x="880" y="621" class="annot">no shared mutable state</text>
+
+  <!-- AKD tie-in callout -->
+  <rect x="880" y="680" width="600" height="130" fill="#e8f0fe" stroke="#0B3D91" stroke-width="2" rx="12"/>
+  <text x="900" y="715" class="annot" font-size="18" font-weight="700" fill="#0B3D91">AKD README · line 88</text>
+  <text x="900" y="745" class="annot" font-size="16" font-style="italic">"Artifact content is code-free. The per-agent</text>
+  <text x="900" y="770" class="annot" font-size="16" font-style="italic">artifacts/ directories are written as the</text>
+  <text x="900" y="795" class="annot" font-size="16" font-style="italic">consumable knowledge layer for agents."</text>
+</svg>

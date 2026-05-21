@@ -1,0 +1,19 @@
+flowchart LR
+    classDef stage  fill:#e8f0fe,stroke:#0B3D91,stroke-width:2px,color:#000
+    classDef hitl   fill:#fff3e0,stroke:#FF6F00,stroke-width:2px,color:#000
+    classDef done   fill:#e6f4ea,stroke:#2e7d32,stroke-width:1.5px,color:#000
+
+    Q([Research<br/>question]) --> S1
+    S1["Stage 1 — Gap<br/>research gaps from corpus"]:::stage
+    S2["Stage 2 — Feasibility<br/>can CM1 / WRF test it?"]:::stage
+    S3["Stage 3 — Workflow Spec<br/>baseline + perturbations"]:::stage
+    S4["Stage 4 — Implementation<br/>FileEdit JSON · submit jobs"]:::stage
+    S5["Stage 5 — Report<br/>fetch results · paper draft"]:::stage
+    R([Paper-style<br/>report]):::done
+
+    H1{{"HITL<br/>approve gaps"}}:::hitl
+    H2{{"HITL<br/>approve feasibility"}}:::hitl
+    H3{{"HITL<br/>approve spec"}}:::hitl
+    H4{{"HITL<br/>approve submission"}}:::hitl
+
+    S1 --> H1 --> S2 --> H2 --> S3 --> H3 --> S4 --> H4 --> S5 --> R

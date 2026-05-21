@@ -1,0 +1,20 @@
+flowchart LR
+    classDef agent fill:#e8f0fe,stroke:#0B3D91,stroke-width:2px,color:#000
+    classDef mcp   fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#000
+    classDef data  fill:#e6f4ea,stroke:#2e7d32,stroke-width:1.5px,color:#000
+    classDef cfg   fill:#fff8e1,stroke:#8d6e63,stroke-width:1px,color:#000
+
+    User([User prompt]) --> A
+    A["AKD Agent<br/>knows: server_label,<br/>server_url, allowed_tools"]:::agent
+
+    A -- "tool_call(name, args)" --> M
+    M["Hosted MCP Server<br/>auth · rate limit ·<br/>response shaping"]:::mcp
+    M -- "tool_result" --> A
+
+    M --> D1["CMR<br/>Earthdata"]:::data
+    M --> D2["PDS / ADS<br/>Astroquery"]:::data
+    M --> D3["Slurm /<br/>Job Mgmt"]:::data
+
+    A --> Out([Stream events<br/>to UI])
+
+    Cfg[/"env vars<br/>CMR_MCP_URL · PDS_MCP_URL · …"/]:::cfg -.-> A

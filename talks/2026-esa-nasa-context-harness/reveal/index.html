@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Context &amp; Harness Engineering — lessons from AKD</title>
+
+  <!-- Reveal.js core + theme (white, light) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+
+  <!-- Code highlighting (kept light) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+
+  <!-- Inter for body, JetBrains Mono for code (free CDN) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --akd-navy: #0B3D91;
+      --akd-orange: #FF6F00;
+      --akd-cream: #faf8f3;
+      --akd-ink: #1f2937;
+      --akd-gray: #6b7280;
+    }
+    .reveal {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--akd-ink);
+    }
+    .reveal .slides section {
+      background: var(--akd-cream);
+      text-align: left;
+    }
+    .reveal h1, .reveal h2 { color: var(--akd-navy); text-transform: none; letter-spacing: -0.01em; }
+    .reveal h3 { color: var(--akd-orange); text-transform: none; }
+    .reveal code, .reveal pre code {
+      font-family: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+      font-size: 0.8em;
+    }
+    .reveal blockquote {
+      border-left: 4px solid var(--akd-orange);
+      background: transparent;
+      box-shadow: none;
+      font-style: italic;
+      color: #4b5563;
+      padding-left: 0.8em;
+    }
+    .reveal table th { background: #e8f0fe; color: var(--akd-navy); }
+    .reveal img { max-height: 75vh; display: block; margin: 0 auto; background: transparent; box-shadow: none; }
+    .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5em; }
+    .small { font-size: 0.7em; color: var(--akd-gray); }
+    .accent { color: var(--akd-orange); font-weight: 700; }
+    .pill {
+      display: inline-block;
+      padding: 2px 12px;
+      border-radius: 12px;
+      background: #e8f0fe;
+      color: var(--akd-navy);
+      font-size: 0.55em;
+      font-weight: 600;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="reveal">
+    <div class="slides">
+      <!-- Slides are injected here from ../slides.md at runtime. -->
+      <section id="loader" data-markdown>
+        <script type="text/template">
+## Loading slides…
+
+If you see this for more than a second, you're probably opening `index.html` directly via `file://`.
+Run a local server: `cd reveal && python3 -m http.server 8000` then open `http://localhost:8000`.
+        </script>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/markdown/markdown.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+  <!-- Mermaid via reveal.js-mermaid-plugin -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js-mermaid-plugin@2.1.0/plugin/mermaid/mermaid.js"></script>
+
+  <script>
+    // Fetch slides.md, strip Marp YAML front-matter, split on horizontal rules,
+    // and inject each slide as its own <section> so Reveal handles per-slide
+    // navigation cleanly. Speaker notes (HTML comments) survive intact.
+    (async function () {
+      const slidesContainer = document.querySelector('.reveal .slides');
+      const loader = document.getElementById('loader');
+
+      try {
+        const resp = await fetch('../slides.md', { cache: 'no-store' });
+        if (!resp.ok) throw new Error('fetch failed: ' + resp.status);
+        let md = await resp.text();
+
+        // Strip Marp YAML front-matter (first ---\n…\n---).
+        md = md.replace(/^---\s*[\r\n]+[\s\S]*?[\r\n]+---\s*[\r\n]+/, '');
+
+        // Split on horizontal-rule slide breaks: lines containing only ---
+        // surrounded by blank lines (Marp / Markdown convention).
+        const parts = md.split(/\n\s*\n---\s*\n\s*\n/);
+
+        // Build sections
+        loader.remove();
+        for (const part of parts) {
+          const section = document.createElement('section');
+          section.setAttribute('data-markdown', '');
+          // Reveal markdown plugin reads <textarea data-template> verbatim.
+          const ta = document.createElement('textarea');
+          ta.setAttribute('data-template', '');
+          ta.textContent = part.trim();
+          section.appendChild(ta);
+          slidesContainer.appendChild(section);
+        }
+      } catch (err) {
+        console.error(err);
+        loader.querySelector('script').textContent =
+          '## Could not load `../slides.md`\\n\\n' +
+          'Run this via a local web server:\\n\\n' +
+          '```\\ncd reveal && python3 -m http.server 8000\\n```\\n\\n' +
+          'Error: ' + err.message;
+      }
+
+      Reveal.initialize({
+        hash: true,
+        slideNumber: 'c/t',
+        controls: true,
+        progress: true,
+        transition: 'fade',
+        // Treat <!-- ... --> HTML comments as speaker notes (Marp convention).
+        markdown: {
+          smartypants: true
+        },
+        plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMermaid ],
+        mermaid: {
+          theme: 'default',
+          themeVariables: {
+            primaryColor: '#e8f0fe',
+            primaryBorderColor: '#0B3D91',
+            primaryTextColor: '#1f2937',
+            lineColor: '#9ca3af',
+            fontFamily: 'Inter, system-ui, sans-serif'
+          }
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

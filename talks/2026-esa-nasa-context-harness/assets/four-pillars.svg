@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" font-family="Inter, system-ui, sans-serif">
+  <defs>
+    <style>
+      .bg { fill: #faf8f3; }
+      .title { fill: #1f2937; font-size: 44px; font-weight: 700; }
+      .subtitle { fill: #4b5563; font-size: 22px; }
+      .card { fill: #ffffff; stroke: #0B3D91; stroke-width: 3; rx: 16; ry: 16; }
+      .card-accent { fill: #fff8ef; stroke: #FF6F00; stroke-width: 3; rx: 16; ry: 16; }
+      .label { fill: #0B3D91; font-size: 36px; font-weight: 700; }
+      .label-accent { fill: #FF6F00; font-size: 36px; font-weight: 700; }
+      .body { fill: #1f2937; font-size: 22px; }
+      .badge { fill: #e8f0fe; stroke: #0B3D91; stroke-width: 1.5; rx: 14; ry: 14; }
+      .badge-text { fill: #0B3D91; font-size: 18px; font-weight: 600; }
+      .center { fill: #0B3D91; rx: 90; ry: 90; }
+      .center-text { fill: #ffffff; font-size: 28px; font-weight: 700; }
+      .center-sub { fill: #c7d2fe; font-size: 18px; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1600" height="900"/>
+
+  <text x="800" y="70" class="title" text-anchor="middle">Context engineering — four pillars</text>
+  <text x="800" y="108" class="subtitle" text-anchor="middle">filling the context window with the right information, every step</text>
+
+  <!-- Quadrant cards -->
+  <rect class="card" x="120"  y="170" width="640" height="290"/>
+  <rect class="card" x="840"  y="170" width="640" height="290"/>
+  <rect class="card" x="120"  y="510" width="640" height="290"/>
+  <rect class="card" x="840"  y="510" width="640" height="290"/>
+
+  <!-- Center node -->
+  <ellipse cx="800" cy="485" rx="110" ry="110" class="center"/>
+  <text x="800" y="478" class="center-text" text-anchor="middle">model</text>
+  <text x="800" y="510" class="center-sub" text-anchor="middle">finite attention</text>
+
+  <!-- WRITE -->
+  <rect class="badge" x="150" y="195" width="120" height="32"/>
+  <text x="210" y="218" class="badge-text" text-anchor="middle">1 · WRITE</text>
+  <text x="150" y="280" class="label">Write</text>
+  <text x="150" y="328" class="body">Externalize state outside</text>
+  <text x="150" y="358" class="body">the window:</text>
+  <text x="150" y="395" class="body">scratchpads, memory stores,</text>
+  <text x="150" y="425" class="body">artifact files, log of decisions.</text>
+
+  <!-- SELECT -->
+  <rect class="badge" x="870" y="195" width="120" height="32"/>
+  <text x="930" y="218" class="badge-text" text-anchor="middle">2 · SELECT</text>
+  <text x="870" y="280" class="label">Select</text>
+  <text x="870" y="328" class="body">Pull in only what's relevant:</text>
+  <text x="870" y="365" class="body">retrieval (lexical / embedding),</text>
+  <text x="870" y="395" class="body">tool descriptions on demand,</text>
+  <text x="870" y="425" class="body">index.md manifests.</text>
+
+  <!-- COMPRESS -->
+  <rect class="badge" x="150" y="535" width="160" height="32"/>
+  <text x="230" y="558" class="badge-text" text-anchor="middle">3 · COMPRESS</text>
+  <text x="150" y="620" class="label">Compress</text>
+  <text x="150" y="668" class="body">Summarize when context grows:</text>
+  <text x="150" y="698" class="body">message compaction, structured</text>
+  <text x="150" y="728" class="body">tool outputs over raw dumps,</text>
+  <text x="150" y="758" class="body">running candidate lists.</text>
+
+  <!-- ISOLATE -->
+  <rect class="badge-text" x="0" y="0" width="0" height="0"/>
+  <rect class="badge" x="870" y="535" width="140" height="32"/>
+  <text x="940" y="558" class="badge-text" text-anchor="middle">4 · ISOLATE</text>
+  <text x="870" y="620" class="label">Isolate</text>
+  <text x="870" y="668" class="body">Partition concerns:</text>
+  <text x="870" y="705" class="body">sub-agents with their own</text>
+  <text x="870" y="735" class="body">context, typed state, schema</text>
+  <text x="870" y="765" class="body">boundaries, fresh sessions.</text>
+
+  <!-- Connecting lines to center -->
+  <line x1="760" y1="460" x2="690" y2="430" stroke="#9ca3af" stroke-width="2" stroke-dasharray="6,6"/>
+  <line x1="840" y1="460" x2="910" y2="430" stroke="#9ca3af" stroke-width="2" stroke-dasharray="6,6"/>
+  <line x1="760" y1="510" x2="690" y2="540" stroke="#9ca3af" stroke-width="2" stroke-dasharray="6,6"/>
+  <line x1="840" y1="510" x2="910" y2="540" stroke="#9ca3af" stroke-width="2" stroke-dasharray="6,6"/>
+
+  <text x="800" y="870" class="subtitle" text-anchor="middle" font-style="italic">attributed to LangChain — the canonical decomposition</text>
+</svg>
