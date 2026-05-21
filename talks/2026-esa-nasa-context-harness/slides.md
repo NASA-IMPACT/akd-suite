@@ -130,7 +130,7 @@ Coined recently by OpenAI and Anthropic. The shorthand from analyses of Claude C
 
 ---
 
-## AKD doesn't invent — it synthesizes
+## AKD Adaptation
 
 ![h:540 hero](assets/akd-lineage-map.svg)
 
