@@ -1,19 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" font-family="sans-serif">
   <defs>
     <style>
+      text { font-family: sans-serif; }
       .bg { fill: #faf8f3; }
-      .title { fill: #1f2937; font-size: 42px; font-weight: 700; }
-      .subtitle { fill: #4b5563; font-size: 22px; }
+      .title { fill: #1f2937; font-size: 42px; font-weight: 700; font-family: sans-serif; }
+      .subtitle { fill: #4b5563; font-size: 22px; font-family: sans-serif; }
       .layer  { stroke-width: 3; rx: 14; ry: 14; }
       .l-prim { fill: #e8f0fe; stroke: #0B3D91; }
       .l-acc  { fill: #fff8ef; stroke: #FF6F00; }
       .l-grn  { fill: #ecfdf5; stroke: #047857; }
       .l-prp  { fill: #f3e8ff; stroke: #6d28d9; }
-      .l-name { fill: #1f2937; font-size: 28px; font-weight: 700; }
-      .l-desc { fill: #1f2937; font-size: 18px; }
-      .l-mono { fill: #0B3D91; font-size: 16px; font-family: 'JetBrains Mono', monospace; }
-      .side-h { fill: #1f2937; font-size: 24px; font-weight: 700; }
-      .side-b { fill: #4b5563; font-size: 17px; }
+      .l-name { fill: #1f2937; font-size: 28px; font-weight: 700; font-family: sans-serif; }
+      .l-desc { fill: #1f2937; font-size: 18px; font-family: sans-serif; }
+      .l-mono { fill: #0B3D91; font-size: 16px; font-family: monospace; }
+      .side-h { fill: #1f2937; font-size: 24px; font-weight: 700; font-family: sans-serif; }
+      .side-b { fill: #4b5563; font-size: 17px; font-family: sans-serif; }
     </style>
   </defs>
 
