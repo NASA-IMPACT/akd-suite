@@ -158,18 +158,6 @@ Nidhi just walked you through AKD. Quick recap of where we stand: six domain age
 
 ---
 
-## AKD Labs — the 4-stage workbench
-
-![h:440 hero](assets/akd-labs-stages.svg)
-
-Every published agent passes through these four stages — **SME approval at every gate**, then **publish to the AKD registry**. *Context engineering is built in* — not a step at the end.
-
-<!--
-This is AKD Labs — the platform that operationalizes the agent development lifecycle. Four product stages: Design uses the CARE methodology to produce the full artifact tree (scope, contexts, tools, guardrails, reasoning, output, agents.md as the entry point); Build assembles a runnable agent from the CARE system prompt plus MCP tools plus your chosen model; Debug gives a step-by-step trace inspector with model reasoning, tool I/O, token and cost; Benchmark generates synthetic machine-gradable evals from the agent's own knowledge corpus, with closed-loop ground truth. Between every stage there's an SME approval gate — nothing advances without domain-expert sign-off. After the final SME review, agents publish to the AKD registry. And the dashed feedback loop matters: benchmark findings feed back into design. You can follow up at labs.akd.odsi.io.
--->
-
----
-
 ## Context engineering @ AKD — **CARE**
 
 **CARE = Collaborative Agent Reasoning Engineering**
@@ -271,10 +259,20 @@ The Prithvi agent you'll run loads from an **artifact** with `scope.md / context
 
 <span class="small">**Read:** akd-suite repo · Anthropic *Effective context engineering* · Cognition *Don't build multi-agents* · dbreunig.com *How Long Contexts Fail* · Chroma *Context Rot* · OpenAI *Harness engineering*</span>
 
-<br/>
+<!--
+Three takeaways. One: write context as files, not code. Two: most of the value is in the deterministic harness. Three: evaluation is what makes context engineering a discipline rather than a vibe. And the tie-back — the agent you're about to run in the next 90 minutes uses the same artifact shape AKD uses across NASA SMD. Take the patterns home. One last slide before questions — how we run this end-to-end across AKD.
+-->
 
-**Thank you · questions?** — `github.com/NASA-IMPACT/akd-suite`
+---
+
+## How we apply this — across AKD
+
+![h:380 hero](assets/akd-labs-stages.svg)
+
+<span class="small">Every published agent in our portfolio passes through the same 4-stage workbench — **SME approval at every gate**, **publish to the AKD registry**. Context · harness · guardrails · evaluation, all baked in.</span>
+
+**Thank you · questions?** — `github.com/NASA-IMPACT/akd-suite` · `labs.akd.odsi.io`
 
 <!--
-Three takeaways. One: write context as files, not code. Two: most of the value is in the deterministic harness. Three: evaluation is what makes context engineering a discipline rather than a vibe. And the tie-back — the agent you're about to run in the next 90 minutes uses the same artifact shape AKD uses across NASA SMD. Take the patterns home. Thanks.
+And finally — this is how we actually run the methodology across AKD. Every agent in our portfolio goes through AKD Labs: Design via CARE producing the full artifact tree; Build assembling the runnable agent from system prompt, MCP tools, and chosen model; Debug with the trace inspector for tool I/O, reasoning, and cost; Benchmark with synthetic machine-gradable evals from the agent's own corpus. SME approval at every gate. Final publish to the AKD registry. Benchmark findings feed back into design. Try it yourself at labs.akd.odsi.io. Thank you — happy to take questions.
 -->
