@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 700" font-family="Inter, system-ui, sans-serif">
+  <defs>
+    <style>
+      .bg { fill: #faf8f3; }
+      .subtitle { fill: #4b5563; font-size: 19px; font-style: italic; }
+      .stage-box { fill: #e8f0fe; stroke: #0B3D91; stroke-width: 2.5; rx: 14; ry: 14; }
+      .publish-box { fill: #ecfdf5; stroke: #047857; stroke-width: 2.5; rx: 14; ry: 14; }
+      .stage-num { fill: #0B3D91; font-size: 13px; font-weight: 700; letter-spacing: 2px; }
+      .stage-name { fill: #0B3D91; font-size: 26px; font-weight: 700; letter-spacing: 1.5px; }
+      .publish-name { fill: #047857; font-size: 24px; font-weight: 700; letter-spacing: 1.5px; }
+      .stage-anno { fill: #1f2937; font-size: 14px; }
+      .stage-divider { stroke: #0B3D91; stroke-width: 1; stroke-opacity: 0.3; }
+      .publish-divider { stroke: #047857; stroke-width: 1; stroke-opacity: 0.3; }
+      .out-label { fill: #6b7280; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; }
+      .out-text { fill: #FF6F00; font-size: 16px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+      .out-text-grn { fill: #047857; font-size: 16px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+      .sme-gate { fill: #fff8ef; stroke: #FF6F00; stroke-width: 2.5; }
+      .sme-label { fill: #FF6F00; font-size: 11px; font-weight: 700; letter-spacing: 1.2px; }
+      .arrow { stroke: #6b7280; stroke-width: 2.2; fill: none; }
+      .feedback-arrow { stroke: #FF6F00; stroke-width: 2; fill: none; stroke-dasharray: 6,5; }
+      .feedback-text { fill: #FF6F00; font-size: 15px; font-style: italic; font-weight: 600; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#6b7280"/>
+    </marker>
+    <marker id="arrow-orange" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#FF6F00"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="1800" height="700"/>
+
+  <!-- Subtitle / framing line (slide H2 carries the main title) -->
+  <text x="900" y="65" class="subtitle" text-anchor="middle">labs.akd.odsi.io  ·  SME approval at every gate  ·  publish to the AKD registry</text>
+
+  <!-- STAGE 1: DESIGN -->
+  <rect class="stage-box" x="35" y="130" width="290" height="290"/>
+  <text x="180" y="165" class="stage-num" text-anchor="middle">STAGE 1</text>
+  <text x="180" y="200" class="stage-name" text-anchor="middle">DESIGN</text>
+  <text x="55" y="245" class="stage-anno">▸ CARE interview</text>
+  <text x="55" y="268" class="stage-anno">▸ phase-gated SME elicit</text>
+  <text x="55" y="291" class="stage-anno">▸ artifact tree</text>
+  <line x1="55" y1="320" x2="305" y2="320" class="stage-divider"/>
+  <text x="180" y="345" class="out-label" text-anchor="middle">PRODUCES</text>
+  <text x="180" y="385" class="out-text" text-anchor="middle">artifacts/</text>
+
+  <!-- ARROWS + SME GATE 1 (gap between stages 1 and 2: x=325 → 395; SME diamond center x=360) -->
+  <line x1="325" y1="280" x2="340" y2="280" class="arrow" marker-end="url(#arrow)"/>
+  <polygon points="360,260 380,280 360,300 340,280" class="sme-gate"/>
+  <text x="360" y="284" class="sme-label" text-anchor="middle">SME</text>
+  <line x1="380" y1="280" x2="395" y2="280" class="arrow" marker-end="url(#arrow)"/>
+
+  <!-- STAGE 2: BUILD -->
+  <rect class="stage-box" x="395" y="130" width="290" height="290"/>
+  <text x="540" y="165" class="stage-num" text-anchor="middle">STAGE 2</text>
+  <text x="540" y="200" class="stage-name" text-anchor="middle">BUILD</text>
+  <text x="415" y="245" class="stage-anno">▸ system prompt from CARE</text>
+  <text x="415" y="268" class="stage-anno">▸ MCP tool servers</text>
+  <text x="415" y="291" class="stage-anno">▸ any model · hosted / local</text>
+  <line x1="415" y1="320" x2="665" y2="320" class="stage-divider"/>
+  <text x="540" y="345" class="out-label" text-anchor="middle">PRODUCES</text>
+  <text x="540" y="385" class="out-text" text-anchor="middle">runnable agent</text>
+
+  <!-- ARROWS + SME GATE 2 (gap x=685 → 755) -->
+  <line x1="685" y1="280" x2="700" y2="280" class="arrow" marker-end="url(#arrow)"/>
+  <polygon points="720,260 740,280 720,300 700,280" class="sme-gate"/>
+  <text x="720" y="284" class="sme-label" text-anchor="middle">SME</text>
+  <line x1="740" y1="280" x2="755" y2="280" class="arrow" marker-end="url(#arrow)"/>
+
+  <!-- STAGE 3: DEBUG -->
+  <rect class="stage-box" x="755" y="130" width="290" height="290"/>
+  <text x="900" y="165" class="stage-num" text-anchor="middle">STAGE 3</text>
+  <text x="900" y="200" class="stage-name" text-anchor="middle">DEBUG</text>
+  <text x="775" y="245" class="stage-anno">▸ tool I/O inspector</text>
+  <text x="775" y="268" class="stage-anno">▸ reasoning + responses</text>
+  <text x="775" y="291" class="stage-anno">▸ per-step token + cost</text>
+  <line x1="775" y1="320" x2="1025" y2="320" class="stage-divider"/>
+  <text x="900" y="345" class="out-label" text-anchor="middle">PRODUCES</text>
+  <text x="900" y="385" class="out-text" text-anchor="middle">traces + fixes</text>
+
+  <!-- ARROWS + SME GATE 3 (gap x=1045 → 1115) -->
+  <line x1="1045" y1="280" x2="1060" y2="280" class="arrow" marker-end="url(#arrow)"/>
+  <polygon points="1080,260 1100,280 1080,300 1060,280" class="sme-gate"/>
+  <text x="1080" y="284" class="sme-label" text-anchor="middle">SME</text>
+  <line x1="1100" y1="280" x2="1115" y2="280" class="arrow" marker-end="url(#arrow)"/>
+
+  <!-- STAGE 4: BENCHMARK -->
+  <rect class="stage-box" x="1115" y="130" width="290" height="290"/>
+  <text x="1260" y="165" class="stage-num" text-anchor="middle">STAGE 4</text>
+  <text x="1260" y="200" class="stage-name" text-anchor="middle">BENCHMARK</text>
+  <text x="1135" y="245" class="stage-anno">▸ synthetic evals</text>
+  <text x="1135" y="268" class="stage-anno">▸ closed-loop ground truth</text>
+  <text x="1135" y="291" class="stage-anno">▸ auto-grade any agent</text>
+  <line x1="1135" y1="320" x2="1385" y2="320" class="stage-divider"/>
+  <text x="1260" y="345" class="out-label" text-anchor="middle">PRODUCES</text>
+  <text x="1260" y="385" class="out-text" text-anchor="middle">benchmark + scores</text>
+
+  <!-- ARROWS + SME GATE 4 (gap x=1405 → 1475) -->
+  <line x1="1405" y1="280" x2="1420" y2="280" class="arrow" marker-end="url(#arrow)"/>
+  <polygon points="1440,260 1460,280 1440,300 1420,280" class="sme-gate"/>
+  <text x="1440" y="284" class="sme-label" text-anchor="middle">SME</text>
+  <line x1="1460" y1="280" x2="1475" y2="280" class="arrow" marker-end="url(#arrow)"/>
+
+  <!-- PUBLISH terminal -->
+  <rect class="publish-box" x="1475" y="130" width="290" height="290"/>
+  <text x="1620" y="165" class="stage-num" text-anchor="middle" fill="#047857">FINAL</text>
+  <text x="1620" y="200" class="publish-name" text-anchor="middle">PUBLISH</text>
+  <text x="1495" y="245" class="stage-anno">▸ registry entry</text>
+  <text x="1495" y="268" class="stage-anno">▸ versioned + signed</text>
+  <text x="1495" y="291" class="stage-anno">▸ available to Flow UI</text>
+  <line x1="1495" y1="320" x2="1745" y2="320" class="publish-divider"/>
+  <text x="1620" y="345" class="out-label" text-anchor="middle">DESTINATION</text>
+  <text x="1620" y="385" class="out-text-grn" text-anchor="middle">AKD registry</text>
+
+  <!-- Feedback loop: BENCHMARK back to DESIGN (curved dashed orange) -->
+  <path class="feedback-arrow" d="M 1260 420 C 1260 530, 720 600, 180 530 L 180 425" marker-end="url(#arrow-orange)"/>
+  <text x="720" y="585" class="feedback-text" text-anchor="middle">benchmark findings feed back into agent design</text>
+</svg>

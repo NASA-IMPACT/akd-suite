@@ -45,13 +45,15 @@
   <text x="160" y="645" class="l-desc">HumanTool raises → run pauses → state checkpointed → resume with human's answer</text>
 
   <!-- LAYER 5 — guardrails -->
-  <rect class="layer l-grn" x="120" y="690" width="900" height="100"/>
-  <text x="160" y="735" class="l-name">Composable guardrails</text>
-  <text x="160" y="765" class="l-mono">Granite >> RiskAgent     (and · or · fail-fast)</text>
+  <rect class="layer l-grn" x="120" y="685" width="900" height="135"/>
+  <text x="160" y="715" class="l-name">Composable guardrails <tspan font-size="18" font-weight="400" fill="#4b5563">(operators: and · or · fail-fast)</tspan></text>
+  <text x="160" y="745" class="l-mono">input  ▷ Granite Guardian          (safety / HAP)</text>
+  <text x="160" y="772" class="l-mono">output ▷ RiskAgent · FactReasoner  (risk · factuality + attribution)</text>
+  <text x="160" y="803" class="l-desc" font-style="italic">Attribution · Factuality · Groundedness</text>
 
   <!-- LAYER 6 — orchestrator -->
-  <rect class="layer l-prp" x="120" y="810" width="900" height="60"/>
-  <text x="160" y="850" class="l-name" font-size="22">LangGraph · PostgreSQL checkpoints · FastAPI · SSE</text>
+  <rect class="layer l-prp" x="120" y="830" width="900" height="55"/>
+  <text x="160" y="867" class="l-name" font-size="22">LangGraph · PostgreSQL checkpoints · FastAPI · SSE</text>
 
   <!-- RIGHT SIDE — three distinct properties -->
   <text x="1080" y="195" class="side-h">streaming-native</text>
@@ -64,8 +66,8 @@
   <text x="1080" y="400" class="side-b">deterministic code.</text>
 
   <text x="1080" y="470" class="side-h">composable guardrails</text>
-  <text x="1080" y="500" class="side-b">attach to <tspan font-family="JetBrains Mono, monospace" font-size="16">input</tspan> or <tspan font-family="JetBrains Mono, monospace" font-size="16">output</tspan> of any</text>
-  <text x="1080" y="525" class="side-b">agent, mix &amp; match providers.</text>
+  <text x="1080" y="500" class="side-b">attach as <tspan font-family="JetBrains Mono, monospace" font-size="16">input</tspan> or <tspan font-family="JetBrains Mono, monospace" font-size="16">output</tspan> of any agent;</text>
+  <text x="1080" y="525" class="side-b">three providers swappable per agent.</text>
 
   <text x="1080" y="595" class="side-h">HITL as first-class</text>
   <text x="1080" y="625" class="side-b">approval gates are events, not</text>

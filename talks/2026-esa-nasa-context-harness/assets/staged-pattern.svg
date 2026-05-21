@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 700" font-family="Inter, system-ui, sans-serif">
+  <defs>
+    <style>
+      .bg { fill: #faf8f3; }
+      .title { fill: #1f2937; font-size: 36px; font-weight: 700; }
+      .subtitle { fill: #4b5563; font-size: 19px; font-style: italic; }
+      .stage-box { fill: #e8f0fe; stroke: #0B3D91; stroke-width: 2.5; rx: 12; ry: 12; }
+      .stage-divider { stroke: #0B3D91; stroke-width: 1.5; stroke-opacity: 0.35; }
+      .stage-label { fill: #0B3D91; font-size: 20px; font-weight: 700; letter-spacing: 2px; }
+      .stage-anno-h { fill: #1f2937; font-size: 14px; font-weight: 700; letter-spacing: 0.5px; }
+      .stage-anno { fill: #1f2937; font-size: 13px; }
+      .stage-mono { fill: #0B3D91; font-size: 12px; font-family: 'JetBrains Mono', monospace; }
+      .gate-diamond { fill: #fff8ef; stroke: #FF6F00; stroke-width: 2.5; }
+      .gate-label { fill: #FF6F00; font-size: 11px; font-weight: 700; letter-spacing: 1.2px; }
+      .arrow { stroke: #6b7280; stroke-width: 2; fill: none; }
+      .instance-h { fill: #FF6F00; font-size: 18px; font-weight: 700; letter-spacing: 2px; }
+      .instance-text { fill: #1f2937; font-size: 22px; font-weight: 600; }
+      .instance-sub { fill: #4b5563; font-size: 16px; font-style: italic; }
+      .divider { stroke: #d1d5db; stroke-width: 1.5; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#6b7280"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="1800" height="700"/>
+
+  <!-- Title -->
+  <text x="900" y="50" class="title" text-anchor="middle">Two workflows, one staged pattern</text>
+  <text x="900" y="82" class="subtitle" text-anchor="middle">each stage carries its own artifact · context · guardrails;  explicit hand-offs;  HITL gates where needed</text>
+
+  <!-- STAGE 1 -->
+  <rect class="stage-box" x="120" y="130" width="280" height="220"/>
+  <text x="260" y="165" class="stage-label" text-anchor="middle">STAGE 1</text>
+  <line x1="140" y1="180" x2="380" y2="180" class="stage-divider"/>
+  <text x="140" y="208" class="stage-anno-h">artifact</text>
+  <text x="155" y="228" class="stage-mono">scope · contexts</text>
+  <text x="155" y="246" class="stage-mono">tools · guardrails</text>
+  <text x="155" y="264" class="stage-mono">reasoning · output</text>
+  <text x="140" y="294" class="stage-anno-h">execution</text>
+  <text x="155" y="313" class="stage-anno">▸ input guardrail</text>
+  <text x="155" y="330" class="stage-anno">▸ agent runs</text>
+  <text x="155" y="347" class="stage-anno">▸ output guardrails</text>
+
+  <!-- STAGE 2 -->
+  <rect class="stage-box" x="500" y="130" width="280" height="220"/>
+  <text x="640" y="165" class="stage-label" text-anchor="middle">STAGE 2</text>
+  <line x1="520" y1="180" x2="760" y2="180" class="stage-divider"/>
+  <text x="520" y="208" class="stage-anno-h">artifact</text>
+  <text x="535" y="228" class="stage-mono">scope · contexts</text>
+  <text x="535" y="246" class="stage-mono">tools · guardrails</text>
+  <text x="535" y="264" class="stage-mono">reasoning · output</text>
+  <text x="520" y="294" class="stage-anno-h">execution</text>
+  <text x="535" y="313" class="stage-anno">▸ input guardrail</text>
+  <text x="535" y="330" class="stage-anno">▸ agent runs</text>
+  <text x="535" y="347" class="stage-anno">▸ output guardrails</text>
+
+  <!-- ELLIPSIS column (variable stage count) -->
+  <text x="900" y="250" class="stage-label" text-anchor="middle" font-size="40">···</text>
+
+  <!-- STAGE N-1 -->
+  <rect class="stage-box" x="1020" y="130" width="280" height="220"/>
+  <text x="1160" y="165" class="stage-label" text-anchor="middle">STAGE N-1</text>
+  <line x1="1040" y1="180" x2="1280" y2="180" class="stage-divider"/>
+  <text x="1040" y="208" class="stage-anno-h">artifact</text>
+  <text x="1055" y="228" class="stage-mono">scope · contexts</text>
+  <text x="1055" y="246" class="stage-mono">tools · guardrails</text>
+  <text x="1055" y="264" class="stage-mono">reasoning · output</text>
+  <text x="1040" y="294" class="stage-anno-h">execution</text>
+  <text x="1055" y="313" class="stage-anno">▸ input guardrail</text>
+  <text x="1055" y="330" class="stage-anno">▸ agent runs</text>
+  <text x="1055" y="347" class="stage-anno">▸ output guardrails</text>
+
+  <!-- STAGE N -->
+  <rect class="stage-box" x="1400" y="130" width="280" height="220"/>
+  <text x="1540" y="165" class="stage-label" text-anchor="middle">STAGE N</text>
+  <line x1="1420" y1="180" x2="1660" y2="180" class="stage-divider"/>
+  <text x="1420" y="208" class="stage-anno-h">artifact</text>
+  <text x="1435" y="228" class="stage-mono">scope · contexts</text>
+  <text x="1435" y="246" class="stage-mono">tools · guardrails</text>
+  <text x="1435" y="264" class="stage-mono">reasoning · output</text>
+  <text x="1420" y="294" class="stage-anno-h">execution</text>
+  <text x="1435" y="313" class="stage-anno">▸ input guardrail</text>
+  <text x="1435" y="330" class="stage-anno">▸ agent runs</text>
+  <text x="1435" y="347" class="stage-anno">▸ output guardrails</text>
+
+  <!-- HITL DIAMOND GATES + ARROWS between stages -->
+  <!-- Stage 1 → Stage 2: gate at x=450, y=240 -->
+  <line x1="400" y1="240" x2="425" y2="240" class="arrow"/>
+  <polygon points="450,222 478,240 450,258 422,240" class="gate-diamond"/>
+  <text x="450" y="244" class="gate-label" text-anchor="middle">HITL</text>
+  <line x1="478" y1="240" x2="500" y2="240" class="arrow" marker-end="url(#arrow)"/>
+
+  <!-- Stage 2 → ellipsis -->
+  <line x1="780" y1="240" x2="850" y2="240" class="arrow" marker-end="url(#arrow)"/>
+
+  <!-- ellipsis → Stage N-1 -->
+  <line x1="950" y1="240" x2="1020" y2="240" class="arrow" marker-end="url(#arrow)"/>
+
+  <!-- Stage N-1 → Stage N: gate at x=1350, y=240 -->
+  <line x1="1300" y1="240" x2="1325" y2="240" class="arrow"/>
+  <polygon points="1350,222 1378,240 1350,258 1322,240" class="gate-diamond"/>
+  <text x="1350" y="244" class="gate-label" text-anchor="middle">HITL</text>
+  <line x1="1378" y1="240" x2="1400" y2="240" class="arrow" marker-end="url(#arrow)"/>
+
+  <!-- DIVIDER -->
+  <line x1="120" y1="420" x2="1680" y2="420" class="divider"/>
+
+  <!-- INSTANCES TODAY -->
+  <text x="120" y="465" class="instance-h">INSTANCES LIVE TODAY</text>
+
+  <circle cx="160" cy="520" r="10" fill="#FF6F00"/>
+  <text x="195" y="528" class="instance-text">CM1</text>
+  <text x="285" y="527" class="instance-sub">— weather computational modeling</text>
+
+  <circle cx="160" cy="580" r="10" fill="#FF6F00"/>
+  <text x="195" y="588" class="instance-text">FM Inference</text>
+  <text x="385" y="587" class="instance-sub">— EO foundation-model inference</text>
+
+  <text x="900" y="660" class="subtitle" text-anchor="middle">same harness pattern, two scientific workflows — deployed today</text>
+</svg>
