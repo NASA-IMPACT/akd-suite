@@ -28,7 +28,7 @@
 
   <!-- Column headers -->
   <text x="320" y="110" class="col-h" text-anchor="middle">EXTERNAL PATTERNS</text>
-  <text x="1280" y="110" class="col-h" text-anchor="middle">AKD PRIMITIVES</text>
+  <text x="1280" y="110" class="col-h" text-anchor="middle">PRIMITIVES IN PRACTICE</text>
 
   <!-- LEFT COLUMN — external systems -->
   <rect class="box ext-box" x="80" y="170" width="480" height="60"/>
@@ -90,5 +90,5 @@
   <path class="arrow" d="M 560 720 C 760 670, 840 615, 1040 600" marker-end="url(#arrow)"/>
 
   <!-- Footer -->
-  <text x="800" y="860" class="footer" text-anchor="middle">composable guardrails — the granite >> risk_agent >> fact_reasoner chain with and · or · fail-fast operators — and CARE are AKD's own.</text>
+  <text x="800" y="860" class="footer" text-anchor="middle">composable guardrails — granite >> risk_agent >> fact_reasoner, with and · or · fail-fast operators.</text>
 </svg>

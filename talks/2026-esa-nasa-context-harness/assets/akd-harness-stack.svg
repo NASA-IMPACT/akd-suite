@@ -20,7 +20,7 @@
 
   <rect class="bg" width="1600" height="900"/>
 
-  <text x="800" y="58" class="title" text-anchor="middle">Harness engineering @ AKD — the stack</text>
+  <text x="800" y="58" class="title" text-anchor="middle">The harness stack</text>
   <text x="800" y="96" class="subtitle" text-anchor="middle">primitives that wrap every published agent — built once, reused everywhere</text>
 
   <!-- LAYER 1 — model -->

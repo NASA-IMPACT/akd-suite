@@ -63,7 +63,7 @@ style: |
 Day 4 / Track 1 — GeoAI Agent Tutorial · May 2026
 
 <!--
-Hi everyone. Quick framing for the hands-on you're about to do. We'll spend ~15 minutes on the *vocabulary* that's reshaping production agent systems — context engineering and harness engineering — and then I'll show how AKD applies these ideas. The agent artifact you'll run in the notebook uses the same patterns.
+Hi everyone. Quick framing for the hands-on you're about to do. We'll spend ~15 minutes on the *vocabulary* that's reshaping production agent systems — context engineering and harness engineering — the patterns the community has converged on, and a brief AKD case study at the end. The agent artifact you'll run in the notebook uses the same patterns.
 -->
 
 ---
@@ -73,13 +73,12 @@ Hi everyone. Quick framing for the hands-on you're about to do. We'll spend ~15 
 > "Context engineering is the delicate art and science of filling the context window with just the right information for the next step."
 > — **Andrej Karpathy**, June 2025
 
-The **model** isn't the bottleneck anymore.
-The **system around the model** is.
+The **model** isn't the bottleneck. What's around it is — the **context** that goes in, and the **harness** that wraps it.
 
-<span class="pill">PROMPT → CONTEXT</span> <span class="pill">CONTEXT → HARNESS</span>
+<span class="pill">CONTEXT ENGINEERING</span> <span class="pill">HARNESS ENGINEERING</span>
 
 <!--
-Three years ago, "make the prompt better" was the lever. Today, frontier models are roughly interchangeable for most tasks — the differentiator is what you put in front of them and how you wrap the loop around them. That's the topic of this talk.
+Three years ago, "make the prompt better" was the lever. Today, frontier models are roughly interchangeable for most tasks — the differentiator is the context engineering that decides what goes into the window, and the harness engineering that wraps the loop around the model. Two disciplines, both deterministic, both durable. That's the topic of this talk.
 -->
 
 ---
@@ -118,50 +117,31 @@ The four ways contexts fail — poisoning, distraction, confusion, clash. Two re
 
 > **"~98% of Claude Code is deterministic infrastructure."** — the agent loop is a while-loop; the harness does the work.
 
-![h:380 hero](assets/harness-loop.svg)
+![h:280 hero](assets/harness-loop.svg)
 
 A capable model + a poor harness loses to a weaker model + a great harness. Reliability lives in the surrounding **deterministic** code — tools, loop, guardrails, state.
 
-<span class="small">Anthropic — "Harness design for long-running application development" · OpenAI — "Harness engineering"</span>
+> *"Agents are only as useful as what they can connect to."* — **Anthropic**, 2025
 
 <!--
-Coined recently by OpenAI and Anthropic. The shorthand from analyses of Claude Code: ~98% of the system is deterministic infrastructure — only ~2% is "the agent." Permissions, context management, tool routing, recovery — that's the harness.
+Coined recently by OpenAI and Anthropic. The shorthand from analyses of Claude Code: ~98% of the system is deterministic infrastructure — only ~2% is "the agent." Permissions, context management, tool routing, recovery — that's the harness. And the connectivity layer (tool calling, MCP servers, API integrations) is increasingly first-class — Anthropic's framing in 2025 captured it: the agent is only as good as what it can reach.
 -->
 
 ---
 
-## AKD Adaptation
+## Community patterns
 
 ![h:540 hero](assets/akd-lineage-map.svg)
 
 <!--
-Visual lineage. Left column: the external systems that shaped AKD's design. Right column: AKD's primitives. Arrows show what borrows from where — deterministic harness and artifact-driven context from Claude Code, checkpointing and typed events from LangGraph, plan-retrieve-synthesize from Deep Research (OpenAI / Anthropic / others), tool curation rigor from ChemCrow, the staged scientific pipeline from Sakana AI Scientist. Two AKD primitives sit on the right with no incoming arrows — composable guardrails and the CARE methodology. Those are AKD's own contributions, not borrowed.
+What the community has converged on. Left column: external systems that shaped these patterns. Right column: the primitives that production agent systems keep building. Arrows show inheritance — deterministic harness and artifact-driven context from Claude Code; checkpointing and typed events from LangGraph; plan-retrieve-synthesize from Deep Research (OpenAI, Anthropic, and others); tool curation rigor from ChemCrow; staged scientific pipelines from Sakana AI Scientist. Two primitives on the right have no incoming arrow — composable guardrails and CARE methodology — those are areas where AKD has added to the community pattern set. Point of this slide: the engineering patterns aren't proprietary; they're what works.
 -->
 
 ---
 
-## AKD today — and how we build it
+## CARE — staged design
 
-**6 domain agents** · **two closed-loop workflows** (CM1, FM Inference) · live across **Earth Science · Astrophysics · Planetary Science** · **flow.akd.odsi.io**
-
-<span class="small">**Composable guardrails** — *input*: Granite Guardian (safety / HAP) · *output*: Risk Agent + Fact Reasoner (risk · factuality + attribution)</span>
-
-<br/>
-
-### → How do we actually build these agentic workflows?
-
-Context engineering. Harness engineering. **CARE**.
-
-<!--
-Nidhi just walked you through AKD. Quick recap of where we stand: six domain agents in production across three SMD divisions, two closed-loop workflows running today — CM1 for weather computational modeling, FM Inference for Earth-observation foundation models. Composable guardrails wrap every agent — Granite Guardian on input for safety, Risk Agent and Fact Reasoner on output for domain-policy risk and factuality plus attribution. So the engineering question is: how do you actually build agents like these reliably? That's the next ten minutes — context engineering, harness engineering, and AKD's CARE methodology that ties them together.
--->
-
----
-
-## Context engineering @ AKD — **CARE**
-
-**CARE = Collaborative Agent Reasoning Engineering**
-A staged, artefact-driven discipline. Five phases:
+**CARE = Collaborative Agent Reasoning Engineering** — Nidhi covered this in the preceding session. One concrete example of artifact-driven design (alongside Claude Code's `CLAUDE.md`, Anthropic's Agent Skills, ChemCrow's tool curation).
 
 | # | Phase | Output |
 |---|---|---|
@@ -171,10 +151,10 @@ A staged, artefact-driven discipline. Five phases:
 | 4 | **Prompt architecture** | The artifact directory |
 | 5 | **Benchmarking** | Test suite + rubric |
 
-> *Context engineering — but as a discipline, not an afterthought.*
+> *Design as a discipline, not an afterthought.*
 
 <!--
-CARE is AKD's methodology for designing an agent. Five phases, each producing a concrete artifact. Notice what's missing: code. The first four phases don't write Python — they write markdown. The agent doesn't exist as a class until phase 4-5; before that, it's a documented intent. Lineage note (notes only): tool-curation rigor from ChemCrow; the prompt-architecture pattern evolves Claude Code's CLAUDE.md and AGENTS.md.
+Quick recap since Nidhi covered the details. The shape: five phases, each producing a concrete artifact. The first four phases write markdown, not code. The point: design is staged and documented before the agent exists as a class. This pattern shows up across the production agent world — Claude Code's CLAUDE.md and AGENTS.md, Anthropic's Agent Skills (SKILL.md + supporting files), ChemCrow's tool-curation rigor. CARE is one of these, with the SME-elicitation discipline as the differentiator.
 -->
 
 ---
@@ -184,12 +164,12 @@ CARE is AKD's methodology for designing an agent. Five phases, each producing a 
 ![h:480 hero](assets/artifact-anatomy.svg)
 
 <!--
-Here's the artifact shape AKD agents use. And — this is the punchline — it's the *same* shape as the Prithvi agent you're about to run in the tutorial. scope, contexts, tools, guardrails, reasoning, output, agents.md as the entry point. The agent reads agents.md, then pulls in specific files on demand through its console tools. The notebook code doesn't stitch files together; the *agent* navigates its own knowledge base. Lineage note (notes only): this pattern evolves Claude Code's CLAUDE.md and Anthropic's Agent Skills (SKILL.md + supporting files); AKD calls them artifacts.
+The pattern is the same across production agent systems. Claude Code calls it CLAUDE.md (and AGENTS.md for sub-agents). Anthropic ships it as Agent Skills with a SKILL.md plus supporting files. AKD calls these "artifacts" — same idea: scope, contexts, tools, guardrails, reasoning, output, with an agents.md entry-point manifest. The agent reads agents.md first, then pulls in specific files on demand through its console tools. The notebook code doesn't stitch files together; the agent navigates its own knowledge base. The Prithvi agent you'll run in the tutorial uses exactly this shape.
 -->
 
 ---
 
-## Harness engineering @ AKD
+## Harness primitives in practice
 
 ![h:420 hero](assets/akd-harness-stack.svg)
 
@@ -198,19 +178,7 @@ Here's the artifact shape AKD agents use. And — this is the punchline — it's
 <span class="small">**Multi-agent stance** — single thread per agent; multi-agent only at workflow boundaries, with explicit hand-offs and HITL gates.</span>
 
 <!--
-The AKD harness in one picture. Schema-first BaseAgent and BaseTool — Pydantic in, Pydantic out. Typed StreamEvents — every step emits an event, the UI never polls. HITL as a tool — the HumanTool raises an exception, the run pauses with state persisted in Postgres via LangGraph checkpoints, resumes when the human answers. Composable guardrails wrap the agent on both sides: Granite Guardian as the input gate for HAP/safety screening; Risk Agent and Fact Reasoner on the output side for domain-policy risk and factuality plus attribution. The composition operator chains them — `granite >> risk_agent >> fact_reasoner` with fail-fast semantics, and any of them can be swapped per agent. The dimensions we score against are Attribution, Factuality, and Groundedness. On the multi-agent question — there's a real field debate (Cognition's "don't build multi-agents" vs Anthropic's research showing it works with isolation); AKD's pragmatic middle is single-thread per agent, multi-agent only at workflow boundaries with explicit hand-offs and HITL gates. Lineage (notes only): typed events + checkpointing from LangGraph; HITL-as-tool from Claude Code's permission model; guardrails as a primitive concept from OpenAI Agents SDK and Anthropic permissions — but the `>>` composition operator is AKD's own. All of this is built once in akd-core and reused by every agent.
--->
-
----
-
-## MCP — pluggable scientific data
-
-![h:420 hero](assets/mcp-flow.svg)
-
-**Agent code never touches API keys or HTTP clients.** Swap an upstream source by changing one env var. Same MCP server feeds multiple agents — `allowed_tools` differs.
-
-<!--
-Every AKD agent that needs external data does it through MCP. The agent knows three things: server label, server URL (from an env var), and the whitelist of allowed tool names. The MCP server handles auth, rate limiting, response shaping. This means the agent stays small and reasoning-focused, and the same MCP server can be wired into multiple agents. Lineage (notes only): Anthropic's Model Context Protocol, now adopted by OpenAI Agents SDK; AKD applies it to NASA data systems — CMR, PDS, ADS, Astroquery, job management.
+The harness stack in one picture. Schema-first BaseAgent and BaseTool — Pydantic in, Pydantic out. Typed StreamEvents — every step emits an event, the UI never polls. HITL as a tool — the HumanTool raises an exception, the run pauses with state persisted in Postgres via LangGraph checkpoints, resumes when the human answers. Composable guardrails wrap the agent on both sides: input guardrails (in our setup, Granite Guardian for HAP/safety screening); output guardrails (Risk Agent for domain-policy risk; Fact Reasoner for factuality plus attribution). The composition operator chains them — `granite >> risk_agent >> fact_reasoner` with fail-fast semantics, and any provider can be swapped per agent. The dimensions we score against are Attribution, Factuality, and Groundedness. On the multi-agent question — there's a real field debate (Cognition's "don't build multi-agents" vs Anthropic's research showing it works with isolation); our pragmatic middle is single-thread per agent, multi-agent only at workflow boundaries with explicit hand-offs and HITL gates. Lineage: typed events + checkpointing from LangGraph; HITL-as-tool from Claude Code's permission model; guardrails as a primitive concept from OpenAI Agents SDK and Anthropic permissions — the `>>` composition operator is the addition we made. Built once in core, reused by every agent.
 -->
 
 ---
@@ -224,12 +192,38 @@ Both AKD workflows follow the same **staged pattern** — each stage carries its
 <span class="small">**Instances live today** — **CM1** (weather computational modeling) · **FM Inference** (EO foundation-model inference)</span>
 
 <!--
-Concrete proof at workflow scale. The pattern: each stage owns its artifact (context + reasoning + guardrails), hand-offs between stages are explicit, HITL approval gates where you want them. Two instances are running production today — CM1, the weather computational modeling pipeline; FM Inference, the EO foundation-model inference pipeline. Same harness pattern, two very different scientific workflows. Lineage (notes only): the staged-pipeline pattern owes to Sakana AI Scientist and Google AI co-scientist; HITL gates between stages are AKD's addition. That's what AKD's harness + context engineering looks like at workflow scale, deployed today.
+Concrete proof at workflow scale. The pattern: each stage owns its artifact (context + reasoning + guardrails), hand-offs between stages are explicit, HITL approval gates where you want them. Two instances running production today — CM1, the weather computational modeling pipeline; FM Inference, the EO foundation-model inference pipeline. Same staged pattern, two very different scientific workflows. The staged-pipeline shape itself owes to work like Sakana AI Scientist and Google AI co-scientist; HITL gates between stages are something AKD added.
 -->
 
 ---
 
-## Takeaways — and the tie-back
+## AKD today — a case study
+
+**Accelerated Knowledge Discovery** — NASA-IMPACT's multi-agent framework for science. Applies the patterns we just covered (artifact-driven context, composable guardrails, staged workflows) across NASA's Science Mission Directorate.
+
+**Today** — 6 domain agents · two closed-loop workflows (CM1, FM Inference) · live across **Earth Science · Astrophysics · Planetary Science** · **flow.akd.odsi.io**
+
+<span class="small">**Composable guardrails** — *input*: Granite Guardian (safety / HAP) · *output*: Risk Agent + Fact Reasoner (risk · factuality + attribution)</span>
+
+<!--
+Brief AKD framing — Nidhi covered CARE in the preceding session; AKD is the broader multi-agent framework that CARE sits inside. Six domain agents in production across three SMD divisions, two closed-loop workflows running today — CM1 for weather computational modeling, FM Inference for Earth-observation foundation models. Composable guardrails wrap every agent — Granite Guardian on input for safety, Risk Agent and Fact Reasoner on output for risk and factuality plus attribution. That's the case study. Next slide shows how we operationalize it.
+-->
+
+---
+
+## AKD Labs — the 4-stage workbench
+
+![h:380 hero](assets/akd-labs-stages.svg)
+
+<span class="small">Every published agent passes through the same 4-stage workbench — **SME approval at every gate**, **publish to the AKD registry**. Context · harness · guardrails · evaluation, all wired in.</span>
+
+<!--
+This is how the methodology runs end-to-end across AKD. Every agent goes through Labs: Design via CARE produces the full artifact tree; Build assembles the runnable agent from system prompt, MCP tools, and chosen model; Debug gives the trace inspector for tool I/O, reasoning, and cost; Benchmark generates synthetic machine-gradable evals from the agent's own corpus. SME approval at every gate. Final publish to the AKD registry. Benchmark findings feed back into design. Try it at labs.akd.odsi.io.
+-->
+
+---
+
+## Takeaways
 
 <div class="cols">
 
@@ -237,8 +231,8 @@ Concrete proof at workflow scale. The pattern: each stage owns its artifact (con
 
 ### Three things to take away
 
-1. **Artifact-driven context** — write the agent's knowledge as files, not code.
-2. **Deterministic harness** — the loop is small; the surrounding infra is most of the value.
+1. **Own your tools and harness.**
+2. **Artifact-driven context** — write the agent's knowledge as files, not code.
 3. **Evaluation closes the loop** — without benchmarking, "context engineering" is just vibes.
 
 </div>
@@ -249,30 +243,16 @@ Concrete proof at workflow scale. The pattern: each stage owns its artifact (con
 
 The Prithvi agent you'll run loads from an **artifact** with `scope.md / contexts/ / tools/ / guardrails/ / reasoning.md / output.md / agents.md`.
 
-**Same shape as AKD.** Same ideas, applied to EO foundation models.
+Same shape as the production patterns we just covered — applied to EO foundation models.
 
 </div>
 
 </div>
 
-<br/>
-
-<span class="small">**Read:** akd-suite repo · Anthropic *Effective context engineering* · Cognition *Don't build multi-agents* · dbreunig.com *How Long Contexts Fail* · Chroma *Context Rot* · OpenAI *Harness engineering*</span>
-
-<!--
-Three takeaways. One: write context as files, not code. Two: most of the value is in the deterministic harness. Three: evaluation is what makes context engineering a discipline rather than a vibe. And the tie-back — the agent you're about to run in the next 90 minutes uses the same artifact shape AKD uses across NASA SMD. Take the patterns home. One last slide before questions — how we run this end-to-end across AKD.
--->
-
----
-
-## How we apply this — across AKD
-
-![h:380 hero](assets/akd-labs-stages.svg)
-
-<span class="small">Every published agent in our portfolio passes through the same 4-stage workbench — **SME approval at every gate**, **publish to the AKD registry**. Context · harness · guardrails · evaluation, all baked in.</span>
+<span class="small">**Read:** Anthropic *Effective context engineering* · Cognition *Don't build multi-agents* · dbreunig.com *How Long Contexts Fail* · Chroma *Context Rot* · OpenAI *Harness engineering*</span>
 
 **Thank you · questions?** — `github.com/NASA-IMPACT/akd-suite` · `labs.akd.odsi.io`
 
 <!--
-And finally — this is how we actually run the methodology across AKD. Every agent in our portfolio goes through AKD Labs: Design via CARE producing the full artifact tree; Build assembling the runnable agent from system prompt, MCP tools, and chosen model; Debug with the trace inspector for tool I/O, reasoning, and cost; Benchmark with synthetic machine-gradable evals from the agent's own corpus. SME approval at every gate. Final publish to the AKD registry. Benchmark findings feed back into design. Try it yourself at labs.akd.odsi.io. Thank you — happy to take questions.
+Three takeaways. One — own your tools and harness. Models change fast; your engineering doesn't. The harness, tools, context, and evals stay yours as you swap models in and out. Two — write context as files, not code. Three — evaluation is what turns context engineering into a discipline rather than vibes. The tie-back: the Prithvi agent you'll run uses the same artifact shape these patterns describe. Thanks — happy to take questions.
 -->
