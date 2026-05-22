@@ -41,7 +41,7 @@
   <text x="320" y="468" class="ext-text" text-anchor="middle">Deep Research</text>
 
   <rect class="box ext-box" x="80" y="560" width="480" height="60"/>
-  <text x="320" y="598" class="ext-text" text-anchor="middle">ChemCrow</text>
+  <text x="320" y="598" class="ext-text" text-anchor="middle">Anthropic Skills</text>
 
   <rect class="box ext-box" x="80" y="690" width="480" height="60"/>
   <text x="320" y="728" class="ext-text" text-anchor="middle">Sakana AI Scientist</text>
@@ -84,11 +84,11 @@
   <path class="arrow" d="M 560 330 C 760 335, 840 343, 1040 345" marker-end="url(#arrow)"/>
   <!-- OpenAI Deep Research (center 460) → Plan → retrieve → synthesize (center 430) -->
   <path class="arrow" d="M 560 460 C 760 450, 840 432, 1040 430" marker-end="url(#arrow)"/>
-  <!-- ChemCrow (center 590) → Tool curation (center 515) -->
+  <!-- Anthropic Skills (center 590) → Tool curation (center 515) -->
   <path class="arrow" d="M 560 590 C 760 560, 840 525, 1040 515" marker-end="url(#arrow)"/>
   <!-- Sakana (center 720) → Staged scientific pipeline (center 600) -->
   <path class="arrow" d="M 560 720 C 760 670, 840 615, 1040 600" marker-end="url(#arrow)"/>
 
   <!-- Footer -->
-  <text x="800" y="860" class="footer" text-anchor="middle">composable guardrails — granite >> risk_agent >> fact_reasoner, with and · or · fail-fast operators.</text>
+  <text x="800" y="860" class="footer" text-anchor="middle">composable guardrails — input + output (safety · risk · factuality · attribution); chain with and · or · fail-fast operators.</text>
 </svg>

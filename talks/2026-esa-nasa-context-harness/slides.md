@@ -134,14 +134,14 @@ Coined recently by OpenAI and Anthropic. The shorthand from analyses of Claude C
 ![h:540 hero](assets/akd-lineage-map.svg)
 
 <!--
-What the community has converged on. Left column: external systems that shaped these patterns. Right column: the primitives that production agent systems keep building. Arrows show inheritance — deterministic harness and artifact-driven context from Claude Code; checkpointing and typed events from LangGraph; plan-retrieve-synthesize from Deep Research (OpenAI, Anthropic, and others); tool curation rigor from ChemCrow; staged scientific pipelines from Sakana AI Scientist. Two primitives on the right have no incoming arrow — composable guardrails and CARE methodology — those are areas where AKD has added to the community pattern set. Point of this slide: the engineering patterns aren't proprietary; they're what works.
+What the community has converged on. Left column: external systems that shaped these patterns. Right column: the primitives that production agent systems keep building. Arrows show inheritance — deterministic harness and artifact-driven context from Claude Code; checkpointing and typed events from LangGraph; plan-retrieve-synthesize from Deep Research (OpenAI, Anthropic, and others); tool curation from Anthropic Skills (skill packages bundling tools + curation logic); staged scientific pipelines from Sakana AI Scientist. Two primitives on the right have no incoming arrow — composable guardrails and CARE methodology — those are areas where AKD has added to the community pattern set. Point of this slide: the engineering patterns aren't proprietary; they're what works.
 -->
 
 ---
 
 ## CARE — staged design
 
-**CARE = Collaborative Agent Reasoning Engineering** — Nidhi covered this in the preceding session. One concrete example of artifact-driven design (alongside Claude Code's `CLAUDE.md`, Anthropic's Agent Skills, ChemCrow's tool curation).
+**CARE = Collaborative Agent Reasoning Engineering** — Nidhi covered this in the preceding session. One concrete example of artifact-driven design (alongside Claude Code's `CLAUDE.md` and Anthropic's Agent Skills).
 
 | # | Phase | Output |
 |---|---|---|
@@ -152,7 +152,7 @@ What the community has converged on. Left column: external systems that shaped t
 | 5 | **Benchmarking** | Test suite + rubric |
 
 <!--
-Quick recap since Nidhi covered the details. The shape: five phases, each producing a concrete artifact. The first four phases write markdown, not code. The point: design is staged and documented before the agent exists as a class. This pattern shows up across the production agent world — Claude Code's CLAUDE.md and AGENTS.md, Anthropic's Agent Skills (SKILL.md + supporting files), ChemCrow's tool-curation rigor. CARE is one of these, with the SME-elicitation discipline as the differentiator.
+Quick recap since Nidhi covered the details. The shape: five phases, each producing a concrete artifact. The first four phases write markdown, not code. The point: design is staged and documented before the agent exists as a class. This pattern shows up across the production agent world — Claude Code's CLAUDE.md and AGENTS.md, Anthropic's Agent Skills (SKILL.md + supporting files). CARE is one of these, with the SME-elicitation discipline as the differentiator.
 -->
 
 ---
@@ -171,7 +171,7 @@ The pattern is the same across production agent systems. Claude Code calls it CL
 
 ![h:420 hero](assets/akd-harness-stack.svg)
 
-<span class="small">**Composable guardrails** — *input*: Granite Guardian (HAP / safety) · *output*: Risk Agent (domain-policy risk) + Fact Reasoner (factuality + attribution) · *dimensions*: Attribution · Factuality · Groundedness.</span>
+<span class="small">**Composable guardrails** — attach as *input* (HAP, policy, prompt-injection) or *output* (risk, factuality, attribution); chain with **and · or · fail-fast** operators; providers swappable per agent.</span>
 
 <span class="small">**Multi-agent stance** — single thread per agent; multi-agent only at workflow boundaries, with explicit hand-offs and HITL gates.</span>
 
