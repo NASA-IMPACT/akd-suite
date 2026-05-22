@@ -58,7 +58,7 @@ style: |
 # Context & Harness Engineering
 ## Lessons from **AKD**
 
-**Nishan Pantha** · NASA-IMPACT
+**Nish (Nishan Pantha)** · NASA-IMPACT
 2nd ESA-NASA International Workshop on AI Foundation Models for Earth Observation
 Day 4 / Track 1 — GeoAI Agent Tutorial · May 2026
 
