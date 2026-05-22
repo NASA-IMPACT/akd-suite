@@ -135,7 +135,7 @@ Coined recently by OpenAI and Anthropic. The shorthand from analyses of Claude C
 ![h:540 hero](assets/akd-lineage-map.svg)
 
 <!--
-Visual lineage. Left column: the external systems that shaped AKD's design. Right column: AKD's primitives. Arrows show what borrows from where — deterministic harness and artifact-driven context from Claude Code, checkpointing and typed events from LangGraph, plan-retrieve-synthesize from OpenAI Deep Research, tool curation rigor from ChemCrow, the staged scientific pipeline from Sakana AI Scientist. Two AKD primitives sit on the right with no incoming arrows — composable guardrails and the CARE methodology. Those are AKD's own contributions, not borrowed.
+Visual lineage. Left column: the external systems that shaped AKD's design. Right column: AKD's primitives. Arrows show what borrows from where — deterministic harness and artifact-driven context from Claude Code, checkpointing and typed events from LangGraph, plan-retrieve-synthesize from Deep Research (OpenAI / Anthropic / others), tool curation rigor from ChemCrow, the staged scientific pipeline from Sakana AI Scientist. Two AKD primitives sit on the right with no incoming arrows — composable guardrails and the CARE methodology. Those are AKD's own contributions, not borrowed.
 -->
 
 ---
