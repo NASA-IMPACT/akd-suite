@@ -139,30 +139,12 @@ What the community has converged on. Left column: external systems that shaped t
 
 ---
 
-## CARE — staged design
-
-**CARE = Collaborative Agent Reasoning Engineering** — Nidhi covered this in the preceding session. One concrete example of artifact-driven design (alongside Claude Code's `CLAUDE.md` and Anthropic's Agent Skills).
-
-| # | Phase | Output |
-|---|---|---|
-| 1 | **Scope** | Who, what, when, success criteria |
-| 2 | **Key-info elicitation** | Domain knowledge interview transcripts |
-| 3 | **Reasoning policy** | The loop the agent will run |
-| 4 | **Prompt architecture** | The artifact directory |
-| 5 | **Benchmarking** | Test suite + rubric |
-
-<!--
-Quick recap since Nidhi covered the details. The shape: five phases, each producing a concrete artifact. The first four phases write markdown, not code. The point: design is staged and documented before the agent exists as a class. This pattern shows up across the production agent world — Claude Code's CLAUDE.md and AGENTS.md, Anthropic's Agent Skills (SKILL.md + supporting files). CARE is one of these, with the SME-elicitation discipline as the differentiator.
--->
-
----
-
 ## Artifacts as the knowledge layer
 
-![h:480 hero](assets/artifact-anatomy.svg)
+![h:560 hero](assets/anthropic-skills-spec.svg)
 
 <!--
-The pattern is the same across production agent systems. Claude Code calls it CLAUDE.md (and AGENTS.md for sub-agents). Anthropic ships it as Agent Skills with a SKILL.md plus supporting files. AKD calls these "artifacts" — same idea: scope, contexts, tools, guardrails, reasoning, output, with an agents.md entry-point manifest. The agent reads agents.md first, then pulls in specific files on demand through its console tools. The notebook code doesn't stitch files together; the agent navigates its own knowledge base. The Prithvi agent you'll run in the tutorial uses exactly this shape.
+The artifact-driven pattern is the emerging community standard. Anthropic Skills (October 2025) is the most current and concrete spec: a SKILL.md manifest with frontmatter (name, description) plus a body of instructions, plus supporting subdirectories — references/ for retrievable knowledge, scripts/ for executable hooks, assets/ for supporting files. The key insight: SKILL.md is the only thing loaded eagerly; everything else is pulled in on demand via tools. Claude Code's CLAUDE.md + AGENTS.md is the same pattern, earlier. AKD's artifact tree (which we'll see in the case study) is this same shape — produced by CARE's SME-elicitation discipline. The discipline matters more than the framework name: a consistent, well-specced artifact tree means tool calls become predictable and the agent stops guessing. The Prithvi agent you'll run in the tutorial uses exactly this shape.
 -->
 
 ---
@@ -197,14 +179,12 @@ Concrete proof at workflow scale. The pattern: each stage owns its artifact (con
 
 ## AKD today — a case study
 
-**Accelerated Knowledge Discovery** — NASA-IMPACT's multi-agent framework for science. Applies the patterns we just covered (artifact-driven context, composable guardrails, staged workflows) across NASA's Science Mission Directorate.
+![h:380 hero](assets/artifact-anatomy.svg)
 
-**Today** — 6 domain agents · two closed-loop workflows (CM1, FM Inference) · live across **Earth Science · Astrophysics · Planetary Science** · **flow.akd.odsi.io**
-
-<span class="small">**Composable guardrails** — *input*: Granite Guardian (safety / HAP) · *output*: Risk Agent + Fact Reasoner (risk · factuality + attribution)</span>
+<span class="small">**CARE produces this artifact tree.** Same pattern as Anthropic Skills — `scope.md`, `contexts/`, `tools/`, `guardrails/`, `reasoning.md`, `output.md`, with `agents.md` as the entry-point manifest. 6 domain agents · 2 closed-loop workflows (CM1, FM Inference) · live across Earth Science · Astrophysics · Planetary Science · **flow.akd.odsi.io**</span>
 
 <!--
-Brief AKD framing — Nidhi covered CARE in the preceding session; AKD is the broader multi-agent framework that CARE sits inside. Six domain agents in production across three SMD divisions, two closed-loop workflows running today — CM1 for weather computational modeling, FM Inference for Earth-observation foundation models. Composable guardrails wrap every agent — Granite Guardian on input for safety, Risk Agent and Fact Reasoner on output for risk and factuality plus attribution. That's the case study. Next slide shows how we operationalize it.
+Brief AKD framing — Nidhi covered CARE in the preceding session; AKD is the broader multi-agent framework that CARE sits inside. CARE is the design discipline that produces our artifact trees — the same artifact shape we just covered, with the SME-elicitation phases that make it auditable. Six domain agents in production across three SMD divisions, two closed-loop workflows running today — CM1 for weather computational modeling, FM Inference for Earth-observation foundation models. Composable guardrails wrap every agent — Granite Guardian on input for safety, Risk Agent and Fact Reasoner on output for risk and factuality plus attribution. Next slide shows how Labs operationalizes the whole thing.
 -->
 
 ---

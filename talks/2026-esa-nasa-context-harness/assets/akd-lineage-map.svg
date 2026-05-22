@@ -92,6 +92,9 @@
   <!-- Sakana (center 720) → Staged scientific pipeline (center 605) -->
   <path class="arrow" d="M 560 720 C 760 720, 840 615, 1040 605" marker-end="url(#arrow)"/>
 
+  <!-- Dotted link: Artifact-driven context → CARE methodology (CARE produces artifacts) -->
+  <path d="M 1520 175 C 1580 175, 1580 775, 1520 775" fill="none" stroke="#9ca3af" stroke-width="1.8" stroke-dasharray="5,4"/>
+
   <!-- Footer -->
   <text x="800" y="860" class="footer" text-anchor="middle">composable guardrails — input + output (safety · risk · factuality · attribution); chain with and · or · fail-fast operators.</text>
 </svg>

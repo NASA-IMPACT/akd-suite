@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" font-family="sans-serif">
+  <defs>
+    <style>
+      text { font-family: sans-serif; }
+      .bg { fill: #faf8f3; }
+      .title { fill: #1f2937; font-size: 38px; font-weight: 700; font-family: sans-serif; }
+      .subtitle { fill: #4b5563; font-size: 20px; font-style: italic; font-family: sans-serif; }
+      .folder { fill: #fff8ef; stroke: #FF6F00; stroke-width: 3; rx: 12; ry: 12; }
+      .file   { fill: #ffffff; stroke: #0B3D91; stroke-width: 2; rx: 10; ry: 10; }
+      .manifest { fill: #e8f0fe; stroke: #0B3D91; stroke-width: 3; rx: 10; ry: 10; }
+      .dir-name { fill: #FF6F00; font-size: 22px; font-weight: 700; font-family: monospace; }
+      .file-name { fill: #0B3D91; font-size: 22px; font-weight: 700; font-family: monospace; }
+      .annot { fill: #4b5563; font-size: 17px; font-family: sans-serif; }
+      .mono-small { fill: #4b5563; font-size: 14px; font-family: monospace; }
+      .header-right { fill: #1f2937; font-size: 19px; font-weight: 700; letter-spacing: 1px; font-family: sans-serif; }
+      .body-right { fill: #4b5563; font-size: 16px; font-family: sans-serif; }
+      .manifest-badge { fill: #FF6F00; rx: 6; ry: 6; }
+      .badge-text { fill: white; font-size: 13px; font-weight: 700; letter-spacing: 1.5px; font-family: sans-serif; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1600" height="900"/>
+
+  <text x="800" y="55" class="title" text-anchor="middle">Anthropic Skills — the spec</text>
+  <text x="800" y="88" class="subtitle" text-anchor="middle">a SKILL.md manifest + supporting subdirectories, packaged as a directory</text>
+
+  <!-- Outer skill folder -->
+  <rect class="folder" x="80" y="130" width="780" height="720"/>
+  <text x="110" y="172" class="dir-name">my-skill/</text>
+
+  <!-- SKILL.md manifest -->
+  <rect class="manifest" x="120" y="200" width="700" height="155"/>
+  <text x="145" y="240" class="file-name">SKILL.md</text>
+  <rect class="manifest-badge" x="335" y="218" width="100" height="22"/>
+  <text x="385" y="235" class="badge-text" text-anchor="middle">MANIFEST</text>
+  <text x="145" y="270" class="mono-small">---</text>
+  <text x="145" y="290" class="mono-small">name: my-skill</text>
+  <text x="145" y="310" class="mono-small">description: what this skill does</text>
+  <text x="145" y="330" class="mono-small">---</text>
+  <text x="145" y="348" class="mono-small"># body: instructions for the agent</text>
+
+  <!-- references/ -->
+  <rect class="file" x="120" y="380" width="700" height="120"/>
+  <text x="145" y="418" class="dir-name">references/</text>
+  <text x="145" y="448" class="annot">retrievable knowledge — loaded on demand</text>
+  <text x="145" y="478" class="mono-small">api-reference.md  ·  domain-glossary.md  ·  policy.md</text>
+
+  <!-- scripts/ -->
+  <rect class="file" x="120" y="520" width="700" height="120"/>
+  <text x="145" y="558" class="dir-name">scripts/</text>
+  <text x="145" y="588" class="annot">executable hooks — the agent runs them as tools</text>
+  <text x="145" y="618" class="mono-small">validate.py  ·  fetch.sh  ·  format.ts</text>
+
+  <!-- assets/ -->
+  <rect class="file" x="120" y="660" width="700" height="120"/>
+  <text x="145" y="698" class="dir-name">assets/</text>
+  <text x="145" y="728" class="annot">supporting files — examples, schemas, fixtures</text>
+  <text x="145" y="758" class="mono-small">examples.json  ·  schema.yaml  ·  fixtures/</text>
+
+  <!-- Right-side: why the spec works -->
+  <text x="900" y="200" class="header-right">WHY THE SPEC WORKS</text>
+
+  <text x="900" y="250" class="header-right" font-size="17">load on demand</text>
+  <text x="900" y="275" class="body-right">SKILL.md is the manifest the agent reads;</text>
+  <text x="900" y="298" class="body-right">other files load only when relevant — no</text>
+  <text x="900" y="321" class="body-right">forced context bloat.</text>
+
+  <text x="900" y="370" class="header-right" font-size="17">files, not code</text>
+  <text x="900" y="395" class="body-right">behavior is in markdown + scripts —</text>
+  <text x="900" y="418" class="body-right">diff-able, reviewable, versioned, swappable</text>
+  <text x="900" y="441" class="body-right">across models.</text>
+
+  <text x="900" y="490" class="header-right" font-size="17">tools follow the spec</text>
+  <text x="900" y="515" class="body-right">when the spec is consistent and well-typed,</text>
+  <text x="900" y="538" class="body-right">tool calls become predictable — the agent</text>
+  <text x="900" y="561" class="body-right">stops guessing.</text>
+
+  <text x="900" y="610" class="header-right" font-size="17">portable across runtimes</text>
+  <text x="900" y="635" class="body-right">Claude Code packages this same way;</text>
+  <text x="900" y="658" class="body-right">CLAUDE.md + supporting files is the</text>
+  <text x="900" y="681" class="body-right">same pattern, earlier.</text>
+
+  <text x="900" y="745" class="body-right" font-style="italic" font-size="15">Get the spec right and behavior follows with consistency.</text>
+</svg>
