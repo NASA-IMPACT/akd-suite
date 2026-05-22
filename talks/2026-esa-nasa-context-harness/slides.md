@@ -151,8 +151,6 @@ What the community has converged on. Left column: external systems that shaped t
 | 4 | **Prompt architecture** | The artifact directory |
 | 5 | **Benchmarking** | Test suite + rubric |
 
-> *Design as a discipline, not an afterthought.*
-
 <!--
 Quick recap since Nidhi covered the details. The shape: five phases, each producing a concrete artifact. The first four phases write markdown, not code. The point: design is staged and documented before the agent exists as a class. This pattern shows up across the production agent world — Claude Code's CLAUDE.md and AGENTS.md, Anthropic's Agent Skills (SKILL.md + supporting files), ChemCrow's tool-curation rigor. CARE is one of these, with the SME-elicitation discipline as the differentiator.
 -->
