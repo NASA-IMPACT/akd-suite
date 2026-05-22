@@ -59,8 +59,9 @@
   <rect class="box akd-box" x="1040" y="405" width="480" height="50"/>
   <text x="1280" y="437" class="akd-text" text-anchor="middle">Plan → retrieve → synthesize</text>
 
-  <rect class="box akd-box" x="1040" y="490" width="480" height="50"/>
-  <text x="1280" y="522" class="akd-text" text-anchor="middle">Tool curation + benchmarks</text>
+  <rect class="box akd-box" x="1040" y="485" width="480" height="60"/>
+  <text x="1280" y="510" class="akd-text" text-anchor="middle">Benchmarking</text>
+  <text x="1280" y="532" class="orig-badge" fill="#4b5563" letter-spacing="1px" text-anchor="middle">SYNTHETIC + CURATED · TOOL · HARNESS · AGENT</text>
 
   <rect class="box akd-box" x="1040" y="575" width="480" height="50"/>
   <text x="1280" y="607" class="akd-text" text-anchor="middle">Staged scientific pipeline</text>
@@ -84,10 +85,12 @@
   <path class="arrow" d="M 560 330 C 760 335, 840 343, 1040 345" marker-end="url(#arrow)"/>
   <!-- OpenAI Deep Research (center 460) → Plan → retrieve → synthesize (center 430) -->
   <path class="arrow" d="M 560 460 C 760 450, 840 432, 1040 430" marker-end="url(#arrow)"/>
-  <!-- Anthropic Skills (center 590) → Tool curation (center 515) -->
-  <path class="arrow" d="M 560 590 C 760 560, 840 525, 1040 515" marker-end="url(#arrow)"/>
-  <!-- Sakana (center 720) → Staged scientific pipeline (center 600) -->
-  <path class="arrow" d="M 560 720 C 760 670, 840 615, 1040 600" marker-end="url(#arrow)"/>
+  <!-- Anthropic Skills (center 590) → Artifact-driven context (center 175) -->
+  <path class="arrow" d="M 560 590 C 760 590, 760 175, 1040 175" marker-end="url(#arrow)"/>
+  <!-- Sakana (center 720) → Benchmarking (center 515) -->
+  <path class="arrow" d="M 560 720 C 760 700, 820 540, 1040 515" marker-end="url(#arrow)"/>
+  <!-- Sakana (center 720) → Staged scientific pipeline (center 605) -->
+  <path class="arrow" d="M 560 720 C 760 720, 840 615, 1040 605" marker-end="url(#arrow)"/>
 
   <!-- Footer -->
   <text x="800" y="860" class="footer" text-anchor="middle">composable guardrails — input + output (safety · risk · factuality · attribution); chain with and · or · fail-fast operators.</text>
